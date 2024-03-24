@@ -33,6 +33,7 @@
             <a class="collapse-item" href="<?= BASE_URL_ADMIN ?>?act=products">Quản lý sản phẩm</a>
             <a class="collapse-item" href="<?= BASE_URL_ADMIN ?>?act=catalogues">Quản lý danh mục</a>
             <a class="collapse-item" href="<?= BASE_URL_ADMIN ?>?act=users">Quản lý người dùng</a>
+            <a class="collapse-item" href="<?= BASE_URL_ADMIN ?>?act=news">Quản lý bài viết, tin tức</a>
         </div>
     </div>
 </li>

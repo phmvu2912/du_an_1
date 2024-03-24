@@ -103,6 +103,23 @@ if (!function_exists('listAllProducts')) {
     }
 }
 
+// Lấy toàn bộ bản ghi của bảng danh mục
+if (!function_exists('listAllBlog')) {
+    function listAllBlog($tableName) {
+        try {
+            $sql = "SELECT * FROM $tableName ORDER BY id_bai_viet DESC";
+
+            $stmt = $GLOBALS['conn']->prepare($sql);
+
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+        } catch (\Exception $e) {
+            debug($e);
+        }
+    }
+}
+
 
 // Lấy toàn bộ bản ghi của bảng danh mục
 if (!function_exists('listAllCatalog')) {
@@ -177,6 +194,25 @@ if (!function_exists('showOneCatalog')) {
     }
 }
 
+// Lấy 1 bản ghi của bảng bài viết
+if (!function_exists('showOneBlog')) {
+    function showOneBlog($tableName, $id) {
+        try {
+            $sql = "SELECT * FROM $tableName WHERE id_bai_viet = :id_bai_viet LIMIT 1";
+
+            $stmt = $GLOBALS['conn']->prepare($sql);
+
+            $stmt->bindParam(":id_bai_viet", $id);
+
+            $stmt->execute();
+
+            return $stmt->fetch();
+        } catch (\Exception $e) {
+            debug($e);
+        }
+    }
+}
+
 // Lấy 1 bản ghi của bảng sản phẩm
 if (!function_exists('showOneProduct')) {
     function showOneProduct($tableName, $id) {
@@ -220,6 +256,29 @@ if (!function_exists('updateOneCatalog')) {
 }
 
 // Cập nhật 1 bản ghi của bảng danh mục
+if (!function_exists('updateOneBlog')) {
+    function updateOneBlog($tableName, $id, $data = []) {
+        try {
+            $setParams = get_set_params($data);
+
+            $sql = "UPDATE $tableName SET $setParams WHERE id_bai_viet = :id_bai_viet";
+            
+            $stmt = $GLOBALS['conn']->prepare($sql);
+
+            foreach ($data as $fieldName => &$value) {
+                $stmt->bindParam(":$fieldName", $value);
+            }
+
+            $stmt->bindParam(":id_bai_viet", $id);
+
+            $stmt->execute();
+        } catch (\Exception $e) {
+            debug($e);
+        }
+    }
+}
+
+// Cập nhật 1 bản ghi của bảng danh mục
 if (!function_exists('updateOneUser')) {
     function updateOneUser($tableName, $id, $data = []) {
         try {
@@ -252,6 +311,23 @@ if (!function_exists('deleteCatalog')) {
             $stmt = $GLOBALS['conn']->prepare($sql);
 
             $stmt->bindParam(":id_danh_muc", $id);
+
+            $stmt->execute();
+        } catch (\Exception $e) {
+            debug($e);
+        }
+    }
+}
+
+// Xóa 1 bản ghi của bảng bài viết
+if (!function_exists('deleteBlog')) {
+    function deleteBlog($tableName, $id) {
+        try {
+            $sql = "DELETE FROM $tableName WHERE id_bai_viet = :id_bai_viet";
+            
+            $stmt = $GLOBALS['conn']->prepare($sql);
+
+            $stmt->bindParam(":id_bai_viet", $id);
 
             $stmt->execute();
         } catch (\Exception $e) {
