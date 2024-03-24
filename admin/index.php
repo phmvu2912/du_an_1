@@ -15,7 +15,7 @@ $act = $_GET['act'] ?? '/';
 
 // Biến này cần khai báo được link cần đăng nhập mới vào được
 $arrRouteNeedAuth = [
-    
+
 ];
 
 // Kiểm tra xem user đã đăng nhập chưa
@@ -23,8 +23,24 @@ middleware_auth_check($act, $arrRouteNeedAuth);
 
 match ($act) {
     '/' => dashboard(),
-    'products' => showProducts(),
-    'catalogues' => showCatalogues()
+
+    // Routers Sản phẩm
+    'products' => productsListAll(),
+    'products-edit' => productsEdit($_GET['id']),
+    'products-add' => productsCreate(),
+    'products-delete' => productsDelete($_GET['id']),
+
+    // Routers Danh mục
+    'catalogues' => cataloguesListAll(),
+    'catalogues-add' => cataloguesCreate(),
+    'catalogues-edit' => cataloguesEdit($_GET['id']),
+    'catalogues-delete' => cataloguesDelete($_GET['id']),
+    // Routers Người dùng
+    'users' => usersListAll(),
+    'users-details' => usersListOne($_GET['id']),
+    'users-add' => userCreate(),
+    'users-edit' => userUpdate($_GET['id']),
+    'users-delete' => userDelete($_GET['id']),
 };
 
 require_once '../commons/disconnect-db.php';

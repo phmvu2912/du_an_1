@@ -15,7 +15,7 @@
 <li class="nav-item active">
     <a class="nav-link" href="<?= BASE_URL_ADMIN ?>">
         <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Dashboard</span></a>
+        <span>Trang chủ</span></a>
 </li>
 
 <!-- Divider -->
@@ -32,6 +32,7 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="<?= BASE_URL_ADMIN ?>?act=products">Quản lý sản phẩm</a>
             <a class="collapse-item" href="<?= BASE_URL_ADMIN ?>?act=catalogues">Quản lý danh mục</a>
+            <a class="collapse-item" href="<?= BASE_URL_ADMIN ?>?act=users">Quản lý người dùng</a>
         </div>
     </div>
 </li>

@@ -2,8 +2,9 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Quản lý sản phẩm</h1>
-        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                class="fas fa-download fa-sm text-white-50"></i> Thêm sản phẩm</a>
+        <a href="<?= BASE_URL_ADMIN . '?act=catalogues-add' ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            Thêm danh mục
+        </a>
     </div>
 
     <!-- Content Row -->
@@ -23,8 +24,8 @@
                         <th class='text-center'><?= $item['id_danh_muc'] ?></th>
                         <td><?= $item['ten_dm'] ?></td>
                         <td class='text-center'>
-                            <button class='btn btn-primary'>Cập nhật</button>
-                            <button class='btn btn-danger'>Xóa</button>
+                            <a class='btn btn-primary' href="?act=catalogues-edit&id=<?= $item['id_danh_muc'] ?>">Cập nhật</a>
+                            <a type='button' class='btn btn-danger' onclick="return confirm('Bạn có muốn xóa danh mục này không?')" href="?act=catalogues-delete&id=<?= $item['id_danh_muc'] ?>">Xóa</a>
                         </td>
                     </tr>
             <?php endforeach; ?>
