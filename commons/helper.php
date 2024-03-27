@@ -28,6 +28,22 @@ if (!function_exists('e404')) {
     }
 }
 
+if (!function_exists('upload_file')) {
+    function upload_file($file, $pathFolderUpload) {
+
+        if (!empty ($file)) {
+            $thumbnailPath = $pathFolderUpload . time() . '-' . basename($file['name']);
+
+            if (move_uploaded_file($file["tmp_name"], PATH_UPLOAD . $thumbnailPath)) {
+                return $thumbnailPath;
+            }
+
+            return null;
+        }
+    }
+}
+
+
 if (!function_exists('middleware_auth_check')) {
     function middleware_auth_check($act, $arrRouteNeedAuth) {
         if ($act == 'login') {
@@ -36,9 +52,10 @@ if (!function_exists('middleware_auth_check')) {
                 exit();
             }
         } 
-        elseif (empty($_SESSION['user']) && in_array($act, $arrRouteNeedAuth)) {
+        elseif (empty($_SESSION['user'])) {
             header('Location: ' . BASE_URL . '?act=login');
             exit();
         }
     }
 }
+

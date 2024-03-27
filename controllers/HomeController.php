@@ -4,6 +4,8 @@ function homeIndex()
 {
     $products = listAllProducts('san_pham');
 
+    $posts = listAllBlog('bai_viet');
+
     // $catalogues = listAll('catalogues');
 
     // if (isset($_GET["search"])) {
@@ -17,11 +19,14 @@ function homeIndex()
 
     //     $products = getSearchProduct($catalogue_id, $product_name, $price_min, $price_max);
     // }
+
+    $title = 'Trang chủ';
+    $view = 'home';
     
-    require_once PATH_VIEW . 'home.php';
+    require_once PATH_VIEW . 'layouts/master.php';
 }
 
-function homeAdmin() {
+// function homeAdmin() {
     
-    require_once PATH_VIEW . 'admin/dashboard.php';
-}
+//     require_once PATH_VIEW . 'admin/dashboard.php';
+// }

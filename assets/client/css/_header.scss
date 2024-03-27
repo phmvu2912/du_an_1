@@ -1,0 +1,45 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+
+    &-left {
+        flex: 1;
+    }
+
+    &-center {
+        flex: 1;
+
+        .menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+
+            li a {
+                font-size: 18px;
+                font-weight: 500;
+            }
+        }
+
+    }
+
+    &-right {
+        flex: 1;
+
+        .icons {
+            display: flex;
+            justify-content: end;
+            align-items: center;
+        }
+
+        .icons li {
+            margin-left: 50px;
+        }
+
+        .icons img {
+            width: 22px;
+        }
+    }
+}

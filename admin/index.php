@@ -1,5 +1,7 @@
 <?php
+
 session_start();
+
 // Require file trong commons
 require_once '../commons/env.php';
 require_once '../commons/helper.php';
@@ -15,7 +17,7 @@ $act = $_GET['act'] ?? '/';
 
 // Biến này cần khai báo được link cần đăng nhập mới vào được
 $arrRouteNeedAuth = [
-
+    '/'
 ];
 
 // Kiểm tra xem user đã đăng nhập chưa
@@ -24,11 +26,16 @@ middleware_auth_check($act, $arrRouteNeedAuth);
 match ($act) {
     '/' => dashboard(),
 
+    // Authen
+    'login' => authenShowFormLogin(),
+    'logout' => authenLogout(),
+
     // Routers Sản phẩm
     'products' => productsListAll(),
     'products-edit' => productsEdit($_GET['id']),
     'products-add' => productsCreate(),
     'products-delete' => productsDelete($_GET['id']),
+    'products-details' => productsListOne($_GET['id']),
 
     // Routers Danh mục
     'catalogues' => cataloguesListAll(),

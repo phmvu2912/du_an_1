@@ -1,0 +1,44 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    padding: 10px 0;
+    border-bottom: 1px solid black;
+
+    &-col {
+        flex: 1;
+        margin: 0 auto;
+        .footer-logo {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .footer-heading, .footer-address {
+            color: #9F9F9F;
+            margin-bottom: 10px;
+        }
+
+        ul li {
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        form {
+            input, button {
+                border: none;
+                border-bottom: 1px solid black;
+                outline: none;
+                background: none;
+                padding: 5px 3px;
+            }
+            button {
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+.footer-bottom {
+    padding: 20px 0;
+}

@@ -8,18 +8,42 @@
     </div>
 
     <!-- Content Row -->
-    <div class="row">
-        <form action="" method="POST" class="row g-3">
+    <div class="row">       
+        <?php
+        if (!empty ($_POST)) {
+            if ($flag == false) {
+                echo '<div class="alert alert-danger">
+                        <p>Không thể thêm bản ghi khi không có dữ liệu!</p>
+                    </div>';
+            }
+        }
+        ?>
+        
+        <form 
+            action="" 
+            method="POST" 
+            class="row g-3"
+            enctype='multipart/form-data'
+        >
             <!-- Tên sản phẩm -->
             <div class="col-12">
                 <label for="inputName" class="form-label font-weight-bold">Nhập tên sản phẩm:</label>
                 <input type="text" class="form-control" id="inputName" name="name">
+                <div class="text-danger">
+                    <span><?= $priceErr ?></span>
+                </div>
             </div>
 
-            <!-- Ảnh sản phẩm -->
+            <!-- Ảnh đại diện -->
             <div class="col-12">
                 <label for="formFile" class="form-label font-weight-bold">Chọn ảnh sản phẩm:</label>
                 <input class="form-control" type="file" id="formFile" name="thumbnail">
+            </div>
+
+            <!-- Ảnh chi tiết -->
+            <div class="col-12">
+                <label for="formFile" class="form-label font-weight-bold">Chọn nhiều ảnh sản phẩm:</label>
+                <input class="form-control" type="file" id="formFile" name="images[]" multiple>
             </div>
 
             <!-- Giá sản phẩm -->
@@ -33,8 +57,8 @@
                 <label for="inputState" class="form-label font-weight-bold">Chọn danh mục</label>
                 <select id="inputState" class="form-control text-center" name="catalogues">
                     <option selected>-- Chọn danh mục sản phẩm --</option>
-                    <?php foreach ($catalogues as $catalog) : ?>
-                    <option name="catalog" value="<?= $catalog['id_danh_muc'] ?>"><?= $catalog['ten_dm'] ?></option>
+                    <?php foreach ($catalogues as $catalog): ?>
+                            <option name="catalog" value="<?= $catalog['id_danh_muc'] ?>"><?= $catalog['ten_dm'] ?></option>
                     <?php endforeach ?>
                 </select>
             </div>

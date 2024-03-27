@@ -4,7 +4,7 @@ if (!function_exists('getUserClientByEmailAndPassword')) {
     function getUserClientByEmailAndPassword($email, $password)
     {
         try {
-            $sql = "SELECT * FROM users WHERE email = :email AND password = :password AND type = 0 LIMIT 1";
+            $sql = "SELECT * FROM nguoi_dung WHERE email = :email AND mat_khau = :password AND vai_tro = 0 LIMIT 1";
 
             $stmt = $GLOBALS['conn']->prepare($sql);
 

@@ -24,7 +24,7 @@
                     <tr>
                         <td><?= $item['tieu_de'] ?></td>
                         <td class='text-center'>
-                            <img src=<?= $item['thumbnail'] ?> alt=<?= $item['tieu_de'] ?> width='100px'>
+                            <img src="<?= BASE_URL . $item['thumbnail'] ?>" alt=<?= $item['tieu_de'] ?> width='100px'>
                         </td>
                         <!-- Thu gọn nội dung bài viết -->
                         <?php

@@ -22,9 +22,9 @@ function newsEdit($id)
         // debug($_POST);
         $data = [
             'tieu_de' => $_POST['heading'],
-            'thumbnail' => $_POST['thumbnail'],
             'noi_dung' => $_POST['content'],
         ];
+
 
         // debug($data);
 
@@ -50,9 +50,21 @@ function newsCreate()
         // debug($_POST);
         $data = [
             'tieu_de' => $_POST['heading'],
-            'thumbnail' => $_POST['thumbnail'],
             'noi_dung' => $_POST['content'],
         ];
+
+        // // upload 1 ảnh
+        // $thumbnail = $_FILES['thumbnail'] ?? null;
+
+        // if (!empty ($thumbnail)) {
+        //     $thumbnailPath = 'uploads/blog/' . uniqid() . '-' . basename($thumbnail['name']);
+
+        //     if (move_uploaded_file($thumbnail["tmp_name"], PATH_UPLOAD . $thumbnailPath)) {
+        //         $data['thumbnail'] = $thumbnailPath;
+        //     } else {
+        //         $data['thumbnail'] = null;
+        //     }
+        // }
 
         insert('bai_viet', $data);
 

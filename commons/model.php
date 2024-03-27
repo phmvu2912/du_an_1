@@ -1,8 +1,9 @@
-<?php 
+<?php
 
 // CRUD -> Create/Read(Danh sách/Chi tiết)/Update/Delete
 if (!function_exists('get_str_keys')) {
-    function get_str_keys($data) {    
+    function get_str_keys($data)
+    {
         $keys = array_keys($data);
 
         $keysTenTen = array_map(function ($key) {
@@ -14,33 +15,36 @@ if (!function_exists('get_str_keys')) {
 }
 
 if (!function_exists('get_virtual_params')) {
-    function get_virtual_params($data) {     
+    function get_virtual_params($data)
+    {
         $keys = array_keys($data);
 
         $tmp = [];
-        foreach($keys as $key) {
+        foreach ($keys as $key) {
             $tmp[] = ":$key";
         }
-        
+
         return implode(',', $tmp);
     }
 }
 
 if (!function_exists('get_set_params')) {
-    function get_set_params($data) {     
+    function get_set_params($data)
+    {
         $keys = array_keys($data);
 
         $tmp = [];
-        foreach($keys as $key) {
+        foreach ($keys as $key) {
             $tmp[] = "`$key` = :$key";
         }
-        
+
         return implode(',', $tmp);
     }
 }
 
 if (!function_exists('insert')) {
-    function insert($tableName, $data = []) {
+    function insert($tableName, $data = [])
+    {
         try {
             $strKeys = get_str_keys($data);
             $virtualParams = get_virtual_params($data);
@@ -61,7 +65,8 @@ if (!function_exists('insert')) {
 }
 
 if (!function_exists('insert_get_last_id')) {
-    function insert_get_last_id($tableName, $data = []) {
+    function insert_get_last_id($tableName, $data = [])
+    {
         try {
             $strKeys = get_str_keys($data);
             $virtualParams = get_virtual_params($data);
@@ -85,7 +90,8 @@ if (!function_exists('insert_get_last_id')) {
 
 // Lấy toàn bộ bản ghi của bảng sản phẩm
 if (!function_exists('listAllProducts')) {
-    function listAllProducts($tableName) {
+    function listAllProducts($tableName)
+    {
         try {
             $sql = "SELECT $tableName.*, danh_muc.ten_dm 
             FROM $tableName 
@@ -105,7 +111,8 @@ if (!function_exists('listAllProducts')) {
 
 // Lấy toàn bộ bản ghi của bảng danh mục
 if (!function_exists('listAllBlog')) {
-    function listAllBlog($tableName) {
+    function listAllBlog($tableName)
+    {
         try {
             $sql = "SELECT * FROM $tableName ORDER BY id_bai_viet DESC";
 
@@ -123,7 +130,8 @@ if (!function_exists('listAllBlog')) {
 
 // Lấy toàn bộ bản ghi của bảng danh mục
 if (!function_exists('listAllCatalog')) {
-    function listAllCatalog($tableName) {
+    function listAllCatalog($tableName)
+    {
         try {
             $sql = "SELECT * FROM $tableName ORDER BY id_danh_muc DESC";
 
@@ -141,7 +149,8 @@ if (!function_exists('listAllCatalog')) {
 
 // Lấy toàn bộ bản ghi của bảng người dùng
 if (!function_exists('listAllUsers')) {
-    function listAllUsers($tableName) {
+    function listAllUsers($tableName)
+    {
         try {
             $sql = "SELECT * FROM $tableName ORDER BY id_nguoi_dung DESC";
 
@@ -158,7 +167,8 @@ if (!function_exists('listAllUsers')) {
 
 // Lấy 1 bản ghi của bảng người dùng
 if (!function_exists('showOneUser')) {
-    function showOneUser($tableName, $id) {
+    function showOneUser($tableName, $id)
+    {
         try {
             $sql = "SELECT * FROM $tableName WHERE id_nguoi_dung = :id_nguoi_dung LIMIT 1";
 
@@ -177,7 +187,8 @@ if (!function_exists('showOneUser')) {
 
 // Lấy 1 bản ghi của bảng danh mục
 if (!function_exists('showOneCatalog')) {
-    function showOneCatalog($tableName, $id) {
+    function showOneCatalog($tableName, $id)
+    {
         try {
             $sql = "SELECT * FROM $tableName WHERE id_danh_muc = :id_danh_muc LIMIT 1";
 
@@ -196,7 +207,8 @@ if (!function_exists('showOneCatalog')) {
 
 // Lấy 1 bản ghi của bảng bài viết
 if (!function_exists('showOneBlog')) {
-    function showOneBlog($tableName, $id) {
+    function showOneBlog($tableName, $id)
+    {
         try {
             $sql = "SELECT * FROM $tableName WHERE id_bai_viet = :id_bai_viet LIMIT 1";
 
@@ -215,9 +227,14 @@ if (!function_exists('showOneBlog')) {
 
 // Lấy 1 bản ghi của bảng sản phẩm
 if (!function_exists('showOneProduct')) {
-    function showOneProduct($tableName, $id) {
+    function showOneProduct($tableName, $id)
+    {
         try {
-            $sql = "SELECT * FROM $tableName WHERE id_sp = :id_sp LIMIT 1";
+            $sql = "SELECT $tableName.*, danh_muc.ten_dm AS ten_dm 
+                FROM $tableName 
+                INNER JOIN danh_muc ON $tableName.id_danh_muc = danh_muc.id_danh_muc
+                WHERE $tableName.id_sp = :id_sp 
+                LIMIT 1";
 
             $stmt = $GLOBALS['conn']->prepare($sql);
 
@@ -232,14 +249,39 @@ if (!function_exists('showOneProduct')) {
     }
 }
 
+// Cập nhật 1 bản ghi của bảng sản phẩm
+if (!function_exists('updateOneProduct')) {
+    function updateOneProduct($tableName, $id, $data = [])
+    {
+        try {
+            $setParams = get_set_params($data);
+
+            $sql = "UPDATE $tableName SET $setParams WHERE id_sp = :id_sp";
+
+            $stmt = $GLOBALS['conn']->prepare($sql);
+
+            foreach ($data as $fieldName => &$value) {
+                $stmt->bindParam(":$fieldName", $value);
+            }
+
+            $stmt->bindParam(":id_sp", $id);
+
+            $stmt->execute();
+        } catch (\Exception $e) {
+            debug($e);
+        }
+    }
+}
+
 // Cập nhật 1 bản ghi của bảng danh mục
 if (!function_exists('updateOneCatalog')) {
-    function updateOneCatalog($tableName, $id, $data = []) {
+    function updateOneCatalog($tableName, $id, $data = [])
+    {
         try {
             $setParams = get_set_params($data);
 
             $sql = "UPDATE $tableName SET $setParams WHERE id_danh_muc = :id_danh_muc";
-            
+
             $stmt = $GLOBALS['conn']->prepare($sql);
 
             foreach ($data as $fieldName => &$value) {
@@ -257,12 +299,13 @@ if (!function_exists('updateOneCatalog')) {
 
 // Cập nhật 1 bản ghi của bảng danh mục
 if (!function_exists('updateOneBlog')) {
-    function updateOneBlog($tableName, $id, $data = []) {
+    function updateOneBlog($tableName, $id, $data = [])
+    {
         try {
             $setParams = get_set_params($data);
 
             $sql = "UPDATE $tableName SET $setParams WHERE id_bai_viet = :id_bai_viet";
-            
+
             $stmt = $GLOBALS['conn']->prepare($sql);
 
             foreach ($data as $fieldName => &$value) {
@@ -280,12 +323,13 @@ if (!function_exists('updateOneBlog')) {
 
 // Cập nhật 1 bản ghi của bảng danh mục
 if (!function_exists('updateOneUser')) {
-    function updateOneUser($tableName, $id, $data = []) {
+    function updateOneUser($tableName, $id, $data = [])
+    {
         try {
             $setParams = get_set_params($data);
 
             $sql = "UPDATE $tableName SET $setParams WHERE id_nguoi_dung = :id_nguoi_dung";
-            
+
             $stmt = $GLOBALS['conn']->prepare($sql);
 
             foreach ($data as $fieldName => &$value) {
@@ -304,10 +348,11 @@ if (!function_exists('updateOneUser')) {
 
 // Xóa 1 bản ghi của bảng danh mục
 if (!function_exists('deleteCatalog')) {
-    function deleteCatalog($tableName, $id) {
+    function deleteCatalog($tableName, $id)
+    {
         try {
             $sql = "DELETE FROM $tableName WHERE id_danh_muc = :id_danh_muc";
-            
+
             $stmt = $GLOBALS['conn']->prepare($sql);
 
             $stmt->bindParam(":id_danh_muc", $id);
@@ -321,10 +366,11 @@ if (!function_exists('deleteCatalog')) {
 
 // Xóa 1 bản ghi của bảng bài viết
 if (!function_exists('deleteBlog')) {
-    function deleteBlog($tableName, $id) {
+    function deleteBlog($tableName, $id)
+    {
         try {
             $sql = "DELETE FROM $tableName WHERE id_bai_viet = :id_bai_viet";
-            
+
             $stmt = $GLOBALS['conn']->prepare($sql);
 
             $stmt->bindParam(":id_bai_viet", $id);
@@ -338,10 +384,11 @@ if (!function_exists('deleteBlog')) {
 
 // Xóa 1 bản ghi của bảng người dùng
 if (!function_exists('deleteUser')) {
-    function deleteUser($tableName, $id) {
+    function deleteUser($tableName, $id)
+    {
         try {
             $sql = "DELETE FROM $tableName WHERE id_nguoi_dung = :id_nguoi_dung";
-            
+
             $stmt = $GLOBALS['conn']->prepare($sql);
 
             $stmt->bindParam(":id_nguoi_dung", $id);
@@ -355,10 +402,11 @@ if (!function_exists('deleteUser')) {
 
 // Xóa 1 bản ghi của bảng sản phẩm
 if (!function_exists('deleteProduct')) {
-    function deleteProduct($tableName, $id) {
+    function deleteProduct($tableName, $id)
+    {
         try {
             $sql = "DELETE FROM $tableName WHERE id_sp = :id";
-            
+
             $stmt = $GLOBALS['conn']->prepare($sql);
 
             $stmt->bindParam(":id", $id);
@@ -373,7 +421,8 @@ if (!function_exists('deleteProduct')) {
 if (!function_exists('checkUniqueName')) {
     // Nếu không trùng thì trả về True
     // Nếu trùng thì trả về False
-    function checkUniqueName($tableName, $name) {
+    function checkUniqueName($tableName, $name)
+    {
         try {
             $sql = "SELECT * FROM $tableName WHERE name = :name LIMIT 1";
 
@@ -385,7 +434,7 @@ if (!function_exists('checkUniqueName')) {
 
             $data = $stmt->fetch();
 
-            return empty($data) ? true : false;
+            return empty ($data) ? true : false;
         } catch (\Exception $e) {
             debug($e);
         }
@@ -395,7 +444,8 @@ if (!function_exists('checkUniqueName')) {
 if (!function_exists('checkUniqueNameForUpdate')) {
     // Nếu không trùng thì trả về True
     // Nếu trùng thì trả về False
-    function checkUniqueNameForUpdate($tableName, $id, $name) {
+    function checkUniqueNameForUpdate($tableName, $id, $name)
+    {
         try {
             $sql = "SELECT * FROM $tableName WHERE name = :name AND id <> :id LIMIT 1";
 
@@ -408,7 +458,7 @@ if (!function_exists('checkUniqueNameForUpdate')) {
 
             $data = $stmt->fetch();
 
-            return empty($data) ? true : false;
+            return empty ($data) ? true : false;
         } catch (\Exception $e) {
             debug($e);
         }

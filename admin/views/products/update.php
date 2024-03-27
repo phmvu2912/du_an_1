@@ -9,7 +9,7 @@
 
     <!-- Content Row -->
     <div class="row">
-        <form action="" method="POST" class="row g-3">
+        <form action="" method="POST" class="row g-3" enctype="multipart/form-data">
             <!-- Tên sản phẩm -->
             <div class="col-12">
                 <label for="inputName" class="form-label font-weight-bold">Nhập tên sản phẩm:</label>
@@ -17,9 +17,27 @@
             </div>
 
             <!-- Ảnh sản phẩm -->
-            <div class="col-12">
+            <div class="col-12 d-flex flex-column">
+            <div class="img">
+                    <img src="<?= BASE_URL . $products['thumbnail'] ?>" width='50px'>
+                </div>
                 <label for="formFile" class="form-label font-weight-bold">Chọn ảnh sản phẩm:</label>
-                <input class="form-control" type="file" id="formFile" name="thumbnail" value="<?= $products['thumbnail'] ?>">
+                <input class="form-control" type="file" id="formFile" name="thumbnail">
+            </div>
+
+
+            <!-- Ảnh chi tiết -->
+            <div class="col-12 d-flex flex-column">
+                <div class="sub-img">
+                    <?php
+                    // Xử lý dữ liệu: Chuyển chuỗi thành mảng các đường dẫn ảnh
+                    $imagePaths = explode(',', $products['anh_sp']);
+                    foreach ($imagePaths as $img): ?>
+                            <img src="<?= BASE_URL . $img ?>" width='50px'>
+                    <?php endforeach ?>
+                </div>
+                <label for="formFile" class="form-label font-weight-bold">Chọn nhiều ảnh sản phẩm:</label>
+                <input class="form-control" type="file" id="formFile" name="images[]" multiple>
             </div>
 
             <!-- Giá sản phẩm -->
@@ -33,12 +51,12 @@
                 <label for="inputState" class="form-label font-weight-bold">Chọn danh mục</label>
                 <select id="inputState" class="form-control text-center" name="catalogues">
                     <option>-- Chọn danh mục sản phẩm --</option>
-                    <?php foreach ($catalogues as $catalog) : ?>
-                        <option 
-                            <?= $products['id_danh_muc'] == $catalog['id_danh_muc'] ? 'selected' : null ?>
-                            value="<?= $catalog['id_danh_muc'] ?>">
-                                <?= $catalog['ten_dm'] ?>
-                        </option>
+                    <?php foreach ($catalogues as $catalog): ?>
+                            <option 
+                                <?= $products['id_danh_muc'] == $catalog['id_danh_muc'] ? 'selected' : null ?>
+                                value="<?= $catalog['id_danh_muc'] ?>">
+                                    <?= $catalog['ten_dm'] ?>
+                            </option>
                     <?php endforeach ?>
                 </select>
             </div>
@@ -51,8 +69,8 @@
             </div>
             
             <div class="col-12">
-                <button type="submit" class="btn btn-primary">Thêm mới</button>
-                <button type="submit" class="btn btn-primary">Nhập lại</button>
+                <button type="submit" class="btn btn-primary">Cập nhật</button>
+                <button type="reset" class="btn btn-primary">Nhập lại</button>
             </div>
         </form>
     </div>

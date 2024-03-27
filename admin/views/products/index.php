@@ -14,7 +14,7 @@
             <thead>
                 <tr class='text-center'>
                     <th>Tên sản phẩm</th>
-                    <th>Ảnh</th>
+                    <th class='text-center'>Ảnh đại diện</th>
                     <th>Giá sản phẩm</th>
                     <th>Mô tả</th>
                     <th>Danh mục</th>
@@ -23,20 +23,21 @@
             </thead>
             
             <tbody>
-                <?php foreach($products as $item) : ?>
-                    <tr>
-                        <td><?= $item['ten_sp'] ?></td>
-                        <td class='text-center'>
-                            <img src=<?= $item['thumbnail'] ?> alt=<?= $item['ten_sp'] ?> width='100px'>
-                        </td>
-                        <td><?= $item['gia_sp'] ?></td>
-                        <td><?= $item['mo_ta'] ?></td>
-                        <td class='text-center'><?= $item['ten_dm'] ?></td>
-                        <td class='text-center'>
-                            <a class='btn btn-primary' href="?act=products-edit&id=<?= $item['id_sp'] ?>">Cập nhật</a>
-                            <a class='btn btn-danger' onclick="return confirm('Bạn có muốn xóa sản phẩm này không?')" href="?act=products-delete&id=<?= $item['id_sp'] ?>">Xóa</a>
-                        </td>
-                    </tr>
+                <?php foreach ($products as $item): ?>
+                        <tr>
+                            <td><?= $item['ten_sp'] ?></td>
+                            <td class='text-center'>
+                                <img src="<?= BASE_URL . $item['thumbnail'] ?>" alt=<?= $item['ten_sp'] ?> width='100px'>
+                            </td>
+                            <td><?= $item['gia_sp'] ?></td>
+                            <td><?= $item['mo_ta'] ?></td>
+                            <td class='text-center'><?= $item['ten_dm'] ?></td>
+                            <td class='text-center'>
+                                <a class='btn btn-info btn-sm text-light' href="?act=products-details&id=<?= $item['id_sp'] ?>">Chi tiết</a>
+                                <a class='btn btn-primary btn-sm' href="?act=products-edit&id=<?= $item['id_sp'] ?>">Cập nhật</a>
+                                <a class='btn btn-danger btn-sm' onclick="return confirm('Bạn có muốn xóa sản phẩm này không?')" href="?act=products-delete&id=<?= $item['id_sp'] ?>">Xóa</a>
+                            </td>
+                        </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
