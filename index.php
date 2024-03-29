@@ -15,6 +15,10 @@ $act = $_GET['act'] ?? '/';
 
 // Biến này cần khai báo được link cần đăng nhập mới vào được
 $arrRouteNeedAuth = [
+    'cart-add','cart-list','cart-inc','cart-dec','cart-del',
+
+
+
 
 ];
 
@@ -30,7 +34,20 @@ match ($act) {
     // Routers Client
     '/' => homeIndex(),
 
-    'cart' => cartList(),
+    // 'shop' => shopList(),
+    // 'about' => aboutShow(),
+    // 'news' => newsList(),
+
+    // Chi tiết sản phẩm
+    'details' => detailsShow($_GET['id']),
+    // 'comment-post' => postComment($_GET['id']),
+
+    // giỏ hàng
+    'cart-add' => cartAdd($_GET['id'], $_GET['quantity']),
+    'cart-list' => cartList(),
+    'cart-inc' => cartInc($_GET['id']),
+    'cart-dec' => cartDec($_GET['id']),
+    'cart-del' => cartDel($_GET['id']),
 
    
 };
