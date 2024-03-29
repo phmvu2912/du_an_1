@@ -4,7 +4,7 @@
                 <!-- Footer column -->
                 <div class="footer-col">
                     <div class="footer-logo">
-                        <p>Furino.</p>
+                        <p>UPTOWN.</p>
                     </div>
                     <div class="footer-address">
                         Nam Từ Liêm, Hà Nội, Việt Nam
@@ -39,7 +39,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>2024 furino. Team 5.</p>
+                <p>2024 UPTOWN. Team 5.</p>
             </div>
         </div>
     </footer>

@@ -12,7 +12,12 @@ function usersListAll() {
 };
 
 function usersListOne($id) {
+    $user = showOneUser('nguoi_dung', $id);
 
+    $title = 'Chi tiết người dùng';
+    $view = 'users/details';
+
+    require_once PATH_VIEW_ADMIN . 'layouts/master.php';
 };
 
 function userCreate() {

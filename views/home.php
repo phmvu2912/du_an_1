@@ -1,7 +1,7 @@
 <div class="container">
             <!-- New -->
             <section>
-                <div class="content">
+                <div class="home-content">
                     <div class="content-heading">
                         <h2>Mới nhất</h2>
                     </div>
@@ -13,12 +13,16 @@
                                         <div class="card-info">
                                             <p class="info-name"><?= $item['ten_sp'] ?></p>
                                             <p class="info-category"><?= $item['ten_dm'] ?></p>
-                                            <p class="info-price"><?= $item['gia_sp'] ?></p>
+                                            <p class="info-price"><?= number_format($item['gia_sp'], 0, '.', '.') ?>đ</p>
                                         </div>                  
                                         <div class="card-action">
                                             <div class="group">
                                                 <div class="addtocart">
-                                                    <button><a href="./cart.html">Thêm vào giỏ hàng</a></button>
+                                                    <button><a href="<?= BASE_URL . '?act=cart-add&id=' . $item['id_sp'] . '&quantity=1' ?>">Thêm vào giỏ hàng</a></button>
+                                                </div>
+
+                                                <div class="addtocart">
+                                                    <button><a href="?act=details&id=<?= $item['id_sp'] ?>">Chi tiết sản phẩm</a></button>
                                                 </div>
 
                                                 <div class="sub-act">
@@ -44,7 +48,7 @@
 
             <!-- Shop  -->
             <section>
-                <div class="content">
+                <div class="home-content">
                     <div class="content-heading">
                         <h2>Shop</h2>
                     </div>
@@ -73,7 +77,7 @@
 
             <!-- Tin tức -->
             <section>
-                <div class="content">
+                <div class="home-content">
                     <div class="content-heading">
                         <h2>Tin tức</h2>
                     </div>
@@ -142,47 +146,5 @@
             </section>
 
             <!-- Service -->
-            <section>
-                <div class="services">
-                    <div class="service">
-                        <div class="service-img">
-                            <img src="./images/icon-trophy.svg" alt="">
-                        </div>
-                        <div class="service-info">
-                            <p class="service-name">High quality</p>
-                            <p class="service-subname">crafted from top materials</p>
-                        </div>
-                    </div>
-
-                    <div class="service">
-                        <div class="service-img">
-                            <img src="./images/icon-tick.svg" alt="">
-                        </div>
-                        <div class="service-info">
-                            <p class="service-name">Warranty Protection</p>
-                            <p class="service-subname">Over 2 years</p>
-                        </div>
-                    </div>
-
-                    <div class="service">
-                        <div class="service-img">
-                            <img src="./images/icon-shipping.svg" alt="">
-                        </div>
-                        <div class="service-info">
-                            <p class="service-name">Free Shipping</p>
-                            <p class="service-subname">Order over 150 $</p>
-                        </div>
-                    </div>
-
-                    <div class="service">
-                        <div class="service-img">
-                            <img src="./images/icon-support.svg" alt="">
-                        </div>
-                        <div class="service-info">
-                            <p class="service-name">24/7 Support</p>
-                            <p class="service-subname">Dedicated support</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <?php require_once PATH_VIEW . 'layouts/partials/services.php' ?>
         </div>

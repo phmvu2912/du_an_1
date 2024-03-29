@@ -13,98 +13,56 @@
                                 <th>Đơn giá</th>
                                 <th>Số lượng</th>
                                 <th>Thành tiền</th>
-                                <th></th>
+                                <th>Thao tác</th>
                             </tr>
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <td>
-                                    <div class="cart-img">
-                                        <img src="./images/sub-img-1.png" alt="">
-                                    </div>
-                                </td>
-                                <td>Asgaard sofa</td>
-                                <td>25.000.000đ</td>
-                                <td><input type="number" value="1"></td>
-                                <td>25.000.000đ</td>
-                                <td>
-                                    <a href="">
-                                        <img src="./images/icon-trash.svg" alt="">
-                                    </a>
-                                </td>
-                            </tr>
+                            <?php $i = 1; foreach($_SESSION['cart'] as $item) : ?>
+                                <tr>
+                                    <td><?= $i++ ?></td>
+                                    <td><?= $item['ten_sp'] ?></td>
+                                    <td>
+                                        <div class="cart-img">
+                                            <img src="<?= $item['thumbnail'] ?>" width="150px" alt="">
+                                        </div>
+                                    </td>                                
+                                    <td><?= number_format($item['gia_sp'], 0, '.', '.') ?>đ</td>
+                                    <td>
+                                        <button type='button' title="Giảm số lượng">
+                                            <a href="<?= BASE_URL . '?act=cart-dec&id=' . $item['id_sp'] ?>">
+                                                <i class="fa-solid fa-minus"></i>
+                                            </a>
+                                        </button>
+                                        &nbsp;
+                                        <span><?= $item['quantity'] ?></span>
+                                        &nbsp;
+                                        <button type='button' title="Tăng số lượng">
+                                            <a href="<?= BASE_URL . '?act=cart-inc&id=' . $item['id_sp'] ?>">
+                                                <i class="fa-solid fa-plus"></i>
+                                            </a>
+                                        </button>
+                                    </td>
+                                    <?php
+                                        $total = $item['gia_sp'] * $item['quantity'];
+
+
+                                    ?>
+                                    <td><?= number_format($total, 0, '.', '.') ?>đ</td>
+                                    <td>
+                                        <button type='button' onclick="return confirm('Bạn có muốn xóa <?= $item['ten_sp'] ?> khỏi giỏ hàng không?')" title="Xóa">
+                                            <a href="<?= BASE_URL . '?act=cart-del&id=' . $item['id_sp'] ?>"><i class="fa-solid fa-trash" style="color: #ff0000;"></i></a>    
+                                        </button>
+                                    </td>
+                                </tr>
+                            <?php endforeach ?>
                         </tbody>
                     </table>
-                </div>
-
-                <div class="spacing"></div>
-
-                <div class="cart-info">
-                    <div class="cart-heading">
-                        <p>Cart Totals</p>
-                    </div>
-
-                    <div class="cart-body">
-                        <div class="cart-item">
-                            <p class="name-item">Subtotal</p>
-                            <p class="subtotal-value">25.000.000đ</p>
-                        </div>
-                        <div class="cart-item">
-                            <p class="name-item">Total</p>
-                            <p class="total-value">25.000.000đ</p>
-                        </div>
-                    </div>
-
-                    <div class="cart-btn">
-                        <button><a href="./checkout-page.html">Check out</a></button>
-                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Service -->
-        <section>
-            <div class="services">
-                <div class="service">
-                    <div class="service-img">
-                        <img src="./images/icon-trophy.svg" alt="">
-                    </div>
-                    <div class="service-info">
-                        <p class="service-name">High quality</p>
-                        <p class="service-subname">crafted from top materials</p>
-                    </div>
-                </div>
+        <?php require_once PATH_VIEW . 'layouts/partials/services.php' ?>
 
-                <div class="service">
-                    <div class="service-img">
-                        <img src="./images/icon-tick.svg" alt="">
-                    </div>
-                    <div class="service-info">
-                        <p class="service-name">Warranty Protection</p>
-                        <p class="service-subname">Over 2 years</p>
-                    </div>
-                </div>
-
-                <div class="service">
-                    <div class="service-img">
-                        <img src="./images/icon-shipping.svg" alt="">
-                    </div>
-                    <div class="service-info">
-                        <p class="service-name">Free Shipping</p>
-                        <p class="service-subname">Order over 150 $</p>
-                    </div>
-                </div>
-
-                <div class="service">
-                    <div class="service-img">
-                        <img src="./images/icon-support.svg" alt="">
-                    </div>
-                    <div class="service-info">
-                        <p class="service-name">24/7 Support</p>
-                        <p class="service-subname">Dedicated support</p>
-                    </div>
-                </div>
-            </div>
-        </section>
     </div>

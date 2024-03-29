@@ -88,6 +88,26 @@ if (!function_exists('insert_get_last_id')) {
     }
 }
 
+
+// Lấy toàn bộ bản ghi của bảng khuyến mãi
+if (!function_exists('listAllVouchers')) {
+    function listAllVouchers($tableName)
+    {
+        try {
+            $sql = "SELECT * FROM $tableName";
+
+            $stmt = $GLOBALS['conn']->prepare($sql);
+
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+        } catch (\Exception $e) {
+            debug($e);
+        }
+    }
+}
+
+
 // Lấy toàn bộ bản ghi của bảng sản phẩm
 if (!function_exists('listAllProducts')) {
     function listAllProducts($tableName)
@@ -164,6 +184,28 @@ if (!function_exists('listAllUsers')) {
         }
     }
 }
+
+
+// Lấy 1 bản ghi của bảng khuyến mãi
+if (!function_exists('showOneVoucher')) {
+    function showOneVoucher($tableName, $id)
+    {
+        try {
+            $sql = "SELECT * FROM $tableName WHERE id_khuyen_mai = :id_khuyen_mai LIMIT 1";
+
+            $stmt = $GLOBALS['conn']->prepare($sql);
+
+            $stmt->bindParam(":id_khuyen_mai", $id);
+
+            $stmt->execute();
+
+            return $stmt->fetch();
+        } catch (\Exception $e) {
+            debug($e);
+        }
+    }
+}
+
 
 // Lấy 1 bản ghi của bảng người dùng
 if (!function_exists('showOneUser')) {
@@ -321,6 +363,32 @@ if (!function_exists('updateOneBlog')) {
     }
 }
 
+
+// Cập nhật 1 bản ghi của bảng khuyến mãi
+if (!function_exists('updateOneVoucher')) {
+    function updateOneVoucher($tableName, $id, $data = [])
+    {
+        try {
+            $setParams = get_set_params($data);
+
+            $sql = "UPDATE $tableName SET $setParams WHERE id_khuyen_mai = :id_khuyen_mai";
+
+            $stmt = $GLOBALS['conn']->prepare($sql);
+
+            foreach ($data as $fieldName => &$value) {
+                $stmt->bindParam(":$fieldName", $value);
+            }
+
+            $stmt->bindParam(":id_khuyen_mai", $id);
+
+            $stmt->execute();
+        } catch (\Exception $e) {
+            debug($e);
+        }
+    }
+}
+
+
 // Cập nhật 1 bản ghi của bảng danh mục
 if (!function_exists('updateOneUser')) {
     function updateOneUser($tableName, $id, $data = [])
@@ -418,6 +486,23 @@ if (!function_exists('deleteProduct')) {
     }
 }
 
+if (!function_exists('deleteVoucher')) {
+    function deleteVoucher($tableName, $id)
+    {
+        try {
+            $sql = "DELETE FROM $tableName WHERE id_khuyen_mai = :id_khuyen_mai";
+
+            $stmt = $GLOBALS['conn']->prepare($sql);
+
+            $stmt->bindParam(":id_khuyen_mai", $id);
+
+            $stmt->execute();
+        } catch (\Exception $e) {
+            debug($e);
+        }
+    }
+}
+
 if (!function_exists('checkUniqueName')) {
     // Nếu không trùng thì trả về True
     // Nếu trùng thì trả về False
@@ -459,6 +544,53 @@ if (!function_exists('checkUniqueNameForUpdate')) {
             $data = $stmt->fetch();
 
             return empty ($data) ? true : false;
+        } catch (\Exception $e) {
+            debug($e);
+        }
+    }
+}
+
+// Lấy 1 bản ghi của bảng người dùng
+if (!function_exists('listCommentById')) {
+    function listCommentById($tableName, $id)
+    {
+        try {
+            // $sql = "SELECT * FROM $tableName WHERE id_sp = :id_sp";
+            $sql = "SELECT bl.*, nd.ten_nguoi_dung 
+                    FROM $tableName bl
+                    JOIN nguoi_dung nd ON bl.id_nguoi_dung = nd.id_nguoi_dung
+                    WHERE bl.id_sp = :id_sp";
+
+            $stmt = $GLOBALS['conn']->prepare($sql);
+
+            $stmt->bindParam(":id_sp", $id);
+
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+        } catch (\Exception $e) {
+            debug($e);
+        }
+    }
+}
+
+if (!function_exists('relatedProducts')) {
+    function relatedProducts($categoryId)
+    {
+        try {
+            $sql = "SELECT sp.*
+                    FROM san_pham sp
+                    JOIN danh_muc_san_pham dm ON sp.id_danh_muc = dm.id
+                    WHERE dm.id = :category_id
+                    LIMIT 4";
+
+            $stmt = $GLOBALS['conn']->prepare($sql);
+
+            $stmt->bindParam(":category_id", $categoryId);
+
+            $stmt->execute();
+
+            return $stmt->fetchAll();
         } catch (\Exception $e) {
             debug($e);
         }

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><?= $title ?></title>
     <link href="<?= BASE_URL ?>assets/client/css/main.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/7d1c352b9d.js" crossorigin="anonymous"></script>
 </head>
 
 <body>

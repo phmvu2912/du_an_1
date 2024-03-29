@@ -52,10 +52,9 @@ if (!function_exists('middleware_auth_check')) {
                 exit();
             }
         } 
-        elseif (empty($_SESSION['user'])) {
+        elseif (empty($_SESSION['user']) && in_array($act, $arrRouteNeedAuth)) {
             header('Location: ' . BASE_URL . '?act=login');
             exit();
         }
     }
 }
-

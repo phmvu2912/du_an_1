@@ -16,7 +16,6 @@
                     <th>Tên sản phẩm</th>
                     <th class='text-center'>Ảnh đại diện</th>
                     <th>Giá sản phẩm</th>
-                    <th>Mô tả</th>
                     <th>Danh mục</th>
                     <th>Tools</th>
                 </tr>
@@ -30,7 +29,6 @@
                                 <img src="<?= BASE_URL . $item['thumbnail'] ?>" alt=<?= $item['ten_sp'] ?> width='100px'>
                             </td>
                             <td><?= $item['gia_sp'] ?></td>
-                            <td><?= $item['mo_ta'] ?></td>
                             <td class='text-center'><?= $item['ten_dm'] ?></td>
                             <td class='text-center'>
                                 <a class='btn btn-info btn-sm text-light' href="?act=products-details&id=<?= $item['id_sp'] ?>">Chi tiết</a>

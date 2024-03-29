@@ -1,6 +1,8 @@
 @import "./header";
 @import "./footer";
 @import "./reset";
+@import "./table";
+@import "./details";
 
 
 section {
@@ -8,8 +10,8 @@ section {
 }
 
 // Content
-.content {
-    &-heading {
+.home-content {
+    .content-heading {
         font-size: 23px;
         margin-bottom: 20px;
     }
@@ -138,6 +140,8 @@ section {
                 border: none;
                 cursor: pointer;
                 transition: 0.2s ease-in-out;
+                min-width: 217px;
+                max-width: 217px;
             }
 
             .addtocart button:hover {
@@ -148,6 +152,7 @@ section {
 
             .addtocart {
                 flex: 1;
+                margin-bottom: 10px;
             }
 
             .sub-act {
@@ -156,7 +161,7 @@ section {
                 align-items: center;
 
                 // gap: 5px;
-                margin: 10px 0;
+                // margin: 10px 0;
                 // a {
                 //     flex: 1; 
                 //     color: white;
@@ -184,6 +189,7 @@ section {
                     display: flex;
                     align-items: center;
                     justify-content: center;
+                    
                 }
 
                 .act-like {
@@ -328,3 +334,7 @@ section {
         }
     }
 }
+
+
+
+

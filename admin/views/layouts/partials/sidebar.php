@@ -2,9 +2,9 @@
 
 <!-- Sidebar - Brand -->
 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-    <div class="sidebar-brand-icon rotate-n-15">
+    <!-- <div class="sidebar-brand-icon rotate-n-15">
         <i class="fas fa-laugh-wink"></i>
-    </div>
+    </div> -->
     <div class="sidebar-brand-text mx-3">ADMINITRATOR</div>
 </a>
 
@@ -59,6 +59,13 @@
     </a>
 </li>
 
+<li class="nav-item">
+    <a class="nav-link collapsed" href="<?= BASE_URL_ADMIN ?>?act=vouchers">
+        <i class="fas fa-fw fa-cog"></i>
+        Quản lý khuyến mãi
+    </a>
+</li>
+
 <!-- Nav Item - Utilities Collapse Menu
 <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
@@ -82,12 +89,12 @@
 <hr class="sidebar-divider">
 
 <!-- Heading -->
-<div class="sidebar-heading">
+<!-- <div class="sidebar-heading">
     Addons
-</div>
+</div> -->
 
 <!-- Nav Item - Pages Collapse Menu -->
-<li class="nav-item">
+<!-- <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
         aria-expanded="true" aria-controls="collapsePages">
         <i class="fas fa-fw fa-folder"></i>
@@ -105,21 +112,21 @@
             <a class="collapse-item" href="blank.html">Blank Page</a>
         </div>
     </div>
-</li>
+</li> -->
 
 <!-- Nav Item - Charts -->
-<li class="nav-item">
+<!-- <li class="nav-item">
     <a class="nav-link" href="charts.html">
         <i class="fas fa-fw fa-chart-area"></i>
         <span>Charts</span></a>
-</li>
+</li> -->
 
 <!-- Nav Item - Tables -->
-<li class="nav-item">
+<!-- <li class="nav-item">
     <a class="nav-link" href="tables.html">
         <i class="fas fa-fw fa-table"></i>
         <span>Tables</span></a>
-</li>
+</li> -->
 
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">

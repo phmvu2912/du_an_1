@@ -31,7 +31,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <?= require_once PATH_VIEW_ADMIN . 'layouts/partials/sidebar.php'; ?>
+        <?php require_once PATH_VIEW_ADMIN . 'layouts/partials/sidebar.php'; ?>
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -41,18 +41,18 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <?= require_once PATH_VIEW_ADMIN . 'layouts/partials/topbar.php'; ?>
+                <?php require_once PATH_VIEW_ADMIN . 'layouts/partials/topbar.php'; ?>
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <?= require_once PATH_VIEW_ADMIN . $view . '.php'; ?>
+                <?php require_once PATH_VIEW_ADMIN . $view . '.php'; ?>
                 <!-- /.container-fluid -->
 
             </div>
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            <?= require_once PATH_VIEW_ADMIN . 'layouts/partials/footer.php'; ?>
+            <?php require_once PATH_VIEW_ADMIN . 'layouts/partials/footer.php'; ?>
             <!-- End of Footer -->
 
         </div>
@@ -67,7 +67,7 @@
     </a>
 
     <!-- Logout Modal-->
-    <?= require_once PATH_VIEW_ADMIN . 'components/logout-modal.php'; ?>
+    <?php require_once PATH_VIEW_ADMIN . 'components/logout-modal.php'; ?>
 
     <!-- Bootstrap core JavaScript-->
     <script src="<?= BASE_URL ?>assets/admin/vendor/jquery/jquery.min.js"></script>

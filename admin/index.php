@@ -17,7 +17,18 @@ $act = $_GET['act'] ?? '/';
 
 // Biến này cần khai báo được link cần đăng nhập mới vào được
 $arrRouteNeedAuth = [
-    '/'
+    'admin',
+
+    'products','products-edit','products-add','products-delete','products-details',
+
+    'catalogues','catalogues-add','catalogues-edit','catalogues-delete',
+
+    'users','users-details','users-add','users-edit','users-delete',
+
+    'news','news-edit','news-add','news-delete',
+
+    'vouchers','vouchers-edit','vouchers-add','vouchers-delete','vouchers-details',
+   
 ];
 
 // Kiểm tra xem user đã đăng nhập chưa
@@ -55,6 +66,13 @@ match ($act) {
     'news-edit' => newsEdit($_GET['id']),
     'news-add' => newsCreate(),
     'news-delete' => newsDelete($_GET['id']),
+
+    // Routers Khuyến mại
+    'vouchers' => vouchersList(),
+    'vouchers-edit' => voucherEdit($_GET['id']),
+    'vouchers-add' => voucherCreate(),
+    'vouchers-delete' => voucherDelete($_GET['id']),
+    'vouchers-details' => voucherListOne($_GET['id']),
 };
 
 require_once '../commons/disconnect-db.php';

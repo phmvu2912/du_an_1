@@ -1,0 +1,550 @@
+// Trang chi tiết sản phẩm
+hr {
+    margin: 50px 0;
+    color: #D9D9D9;
+}
+
+
+// Main content
+.content {
+    display: flex;
+    align-items: start;
+
+    &-left {
+        flex: 1;
+        display: flex;
+        align-items: start;
+        margin-right: 10px;
+
+        .left-col {
+            display: flex;
+            flex-direction: column;
+            margin-right: 20px;
+
+            .sub-img {
+                background-color: #F9F1E7;
+                border-radius: 5px;
+                gap: 10px;
+                margin-bottom: 20px;
+                min-height: 70px;
+                text-align: center;
+            }
+
+
+        }
+
+        .right-col {
+
+            .main-img {
+                background-color: #F9F1E7;
+                border-radius: 5px;
+                text-align: center;
+            }
+
+
+        }
+    }
+
+    &-right {
+        flex: 1;
+        margin-left: 10px;
+
+        .info {
+            .name {
+                font-size: 42px;
+                font-weight: 500;
+                margin-bottom: 5px;
+            }
+
+            .price {
+                p {
+                    font-size: 23px;
+                    color: #9F9F9F;
+                    margin-bottom: 5px;
+                }
+            }
+
+            .rating {
+                margin-bottom: 5px;
+            }
+
+            .description {
+                text-align: justify;
+                font-weight: 500;
+                margin-bottom: 5px;
+            }
+
+            .size {
+                margin-bottom: 10px;
+
+                p {
+                    color: #9F9F9F;
+                    margin-bottom: 5px;
+                }
+
+                .size-btn {
+                    display: flex;
+                    align-items: center;
+                    justify-content: left;
+                }
+
+                .size-btn button {
+                    min-width: 40px;
+                    min-height: 40px;
+                    border: none;
+                    background-color: #F9F1E7;
+                    border-radius: 5px;
+                    margin-right: 15px;
+                }
+
+                .size-btn button:hover {
+                    background-color: #B88E2F;
+                    color: white;
+                }
+            }
+
+            .colors {
+                margin-bottom: 10px;
+
+                p {
+                    color: #9F9F9F;
+                    margin-bottom: 5px;
+                }
+
+                .group-color {
+                    display: flex;
+                    gap: 15px;
+
+                    .circle-color {
+                        border-radius: 100px;
+                        padding: 20px;
+                        background-color: red;
+                        cursor: pointer;
+                    }
+
+                    .violet {
+                        background-color: #816DFA;
+                    }
+
+                    .black {
+                        background-color: #000000;
+                    }
+
+                    .brown {
+                        background-color: #B88E2F;
+                    }
+                }
+            }
+
+            .actions {
+                display: flex;
+                justify-content: space-between;
+
+                .quantity {
+                    // display: flex;
+                    // align-items: center;
+                    // justify-content: center;
+                    text-align: center;
+                }
+
+                .quantity input {
+                    padding: 15px;
+                    text-align: center;
+                    font-weight: 500;
+                    border: 2px solid #9F9F9F;
+                    border-radius: 10px;
+                }
+
+                .add button {
+                    padding: 15px 50px;
+                    font-weight: 500;
+                    border: 2px solid black;
+                    background: none;
+                    border-radius: 10px;
+                    cursor: pointer;
+                }
+
+                .compare button {
+                    padding: 15px 50px;
+                    font-weight: 500;
+                    border: 2px solid #B88E2F;
+                    background: none;
+                    border-radius: 10px;
+                    cursor: pointer;
+                    background-color: #B88E2F;
+                    color: #000000;
+                    transition: 0.5s ease-in-out
+                }
+
+                .compare button:hover {
+                    background-color: #f9f1e7;
+                    border: 2px solid #B88E2F;
+                }
+            }
+
+            .more {
+                .more-info {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 10px;
+
+                    .name-info {
+                        display: flex;
+
+                        b {
+                            min-width: 100px;
+                        }
+
+                        span {
+                            margin-right: 15px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Preview
+.tabs {
+    .tabs-heading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+        font-size: 23px;
+
+        .tab-link {
+            color: #000000;
+            cursor: pointer;
+        }
+
+        .active {
+            font-weight: 500;
+        }
+    }
+
+    &-body {
+        margin: 40px 0;
+        text-align: justify;
+
+        .cmt-heading {
+            font-weight: 500;
+            font-size: 26px;
+            color: red;
+            margin: 10px 0;
+        }
+
+        // Nhập cmt
+        .cmt-input {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+            
+            form {
+                display: flex;
+                align-items: center;
+                flex: 1;
+            }
+            .form-group {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                flex: 1;
+                
+                .form-control {
+                    display: flex;
+                    flex: 1;
+                }
+
+                .form-btn {
+                    display: flex;
+                    justify-content: end;
+                }
+
+                textarea{
+                    padding: 15px 10px;
+                    outline: none;
+                    border: none;
+                    background-color: #e7e7e7;
+                    border-radius: 10px;
+                    display: flex;
+                    flex: 1;
+                    // width: 100%;
+
+                    resize: none;
+                }
+
+                button {
+                    padding: 15px 30px;
+                    border-radius: 10px;
+                    background-color: #F9F1E7;
+                    border: none;
+                    font-weight: 500;
+                    
+                }
+            }
+        }
+
+
+        // Danh sách cmt
+        .cmt {
+            display: flex;
+            justify-content: space-between;
+            background-color: #F9F1E7;
+            padding: 20px 0;
+            align-items: start;
+            gap: 15px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+
+            .avt {
+                width: 50px;
+                height: 50px;
+                border-radius: 100px;
+                background-color: #B88E2F;
+                margin: 0 10px;
+            }
+
+            .cmt-content {
+                flex: 1;
+                text-align: left;
+            }
+
+            .acts {
+                display: flex;
+                align-items: start;
+                gap: 10px;
+                margin-right: 15px;
+            }
+        }
+    }
+
+    &-media {
+        .group-media {
+            display: grid;
+            grid-template-columns: auto auto;
+            gap: 15px;
+        }
+
+        .img {
+
+
+            background: #F9F1E7;
+        }
+    }
+}
+
+// Related list
+.related {
+    &-heading {
+        font-size: 23px;
+        text-align: center;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+
+    &-content {
+        .group-cards {
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            grid-gap: 15px;
+        }
+    }
+
+    .btn-more {
+        display: flex;
+        justify-content: center;
+    }
+
+    .btn-more button {
+        text-align: center;
+        margin: 20px 0;
+        padding: 7px 30px;
+        border: 1px solid #B88E2F;
+        color: #B88E2F;
+        background: none;
+        cursor: pointer;
+    }
+
+    .btn-more button:hover {
+        border: 1px solid #B88E2F;
+        background-color: #B88E2F;
+        color: white;
+    }
+}
+
+// // Card
+// .card {
+//     position: relative;
+//     overflow: hidden;
+
+//     &-img {
+//         width: 100%;
+//         display: block;
+//         margin: auto;
+//     }
+
+//     &-info {
+//         background-color: #F4F5F7;
+//         padding: 10px;
+
+//         .info-name {
+//             font-size: 20px;
+//             font-weight: 700;
+//         }
+
+//         .info-category {
+//             color: #898989;
+//         }
+
+//         .info-price {
+//             font-size: 20px;
+//             font-weight: 700;
+//         }
+//     }
+
+//     &-action {
+//         position: absolute;
+//         top: 0;
+//         left: 0;
+//         width: 100%;
+//         height: 100%;
+//         opacity: 0;
+//         display: flex;
+//         justify-content: center;
+//         align-items: center;
+//         flex-direction: column-reverse;
+//         transition: 0.5s ease-in-out;
+
+//         &-img {
+//             width: 100%;
+//             height: auto;
+//             position: relative;
+
+//             .discount {
+//                 pos .discount-value {
+
+//                     width: 20px;
+//                     border: 1px solid black;
+//                 }
+//             }
+//         }
+
+
+
+//         .group {
+//             display: flex;
+//             flex-direction: column;
+//             gap: 10px;
+
+//             .btn-act {
+//                 flex: 1;
+
+//                 button {
+//                     max-width: 200px;
+//                     min-width: 200px;
+//                     padding: 10px;
+//                     background-color: #FFFFFF;
+//                     color: #B88E2F;
+//                     font-weight: 600;
+//                     border: none;
+//                     cursor: pointer;
+//                     transition: 0.2s ease-in-out;
+//                 }
+
+//                 button:hover {
+//                     background-color: #B88E2F;
+//                     color: black;
+//                     transition: 0.2s ease-in-out;
+//                 }
+//             }
+
+
+//             .sub-act {
+//                 flex: 1;
+//                 margin: 5px 0;
+
+//                 button {
+//                     max-width: 200px;
+//                     min-width: 200px;
+//                     padding: 10px;
+//                     background-color: #FFFFFF;
+//                     color: #B88E2F;
+//                     font-weight: 600;
+//                     border: none;
+//                     cursor: pointer;
+//                     transition: 0.2s ease-in-out;
+//                 }
+
+//                 button:hover {
+//                     background-color: #B88E2F;
+//                     color: black;
+//                     transition: 0.2s ease-in-out;
+//                 }
+
+//                 // .act-share {
+//                 //     display: flex;
+//                 //     align-items: center;
+//                 //     justify-content: start;
+//                 //     gap: 3px;
+//                 //     flex: 1;
+//                 //     margin-bottom: 3px;
+
+//                 //     p {
+//                 //         color: white;
+//                 //         margin-bottom: 3px;
+//                 //     }
+//                 // }
+
+//                 // .act-compare {
+//                 //     display: flex;
+//                 //     align-items: center;
+//                 //     justify-content: center;
+//                 // }
+
+//                 // .act-like {
+//                 //     display: flex;
+//                 //     align-items: center;
+//                 //     justify-content: end;
+//                 //     gap: 3px;
+//                 //     flex: 1;
+
+//                 //     p {
+//                 //         color: white;
+//                 //         margin-bottom: 4px;
+//                 //     }
+
+//                 //     img:hover {
+//                 //         color: red;
+//                 //     }
+//                 // }
+
+//                 // p:hover {
+//                 //     color: #B88E2F;
+//                 //     text-decoration: underline #B88E2F;
+
+//                 // }
+//             }
+
+//             // .sub-act a:hover {
+//             //     color: red;
+//             // }
+
+
+//         }
+//     }
+
+//     // .card-action>* {
+//     //     position: absolute;
+//     //     top: 50%;
+//     //     left: 50%;
+//     //     transform: translate(-50%, -50%);
+//     // }
+// }
+
+.card:hover .card-action {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+
+}
