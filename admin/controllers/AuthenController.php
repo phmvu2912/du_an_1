@@ -36,3 +36,4 @@ function authenLogout() {
     header('Location: ' . BASE_URL_ADMIN);
     exit();
 }
+

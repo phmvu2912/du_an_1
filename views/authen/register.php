@@ -48,16 +48,16 @@
                 </div>
                 <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
                     <form action="" method="POST" >
-                        <?php 
-                            if(isset($_SESSION['error'])) : ?>
-                                <div class="alert alert-danger">
-                                    <?= $_SESSION['error'] ?>
-                                </div>
-                                <?php unset($_SESSION['error']); ?>
+                        <?php if( $status == false ) : ?>
+                            <div class="alert alert-danger">
+                                <?= $err ?>
+                            </div>
                         <?php endif ?>
+                            
+                                
 
                         <div class="divider d-flex align-items-center my-4">
-                            <p class="text-center fw-bold mx-3 mb-0">ĐĂNG NHẬP</p>
+                            <p class="text-center fw-bold mx-3 mb-0">ĐĂNG KÝ</p>
                         </div>
 
                         <!-- Email input -->
@@ -76,7 +76,7 @@
                                 type="password" 
                                 id="form3Example4" 
                                 class="form-control form-control-lg"
-                                placeholder="*****" 
+                                placeholder="Nhập mật khẩu" 
                                 name="password"
                             />
                         </div>
@@ -84,10 +84,10 @@
                         <div class="text-center text-lg-start mt-4 pt-2">
                             <!-- Đăng nhập -->
                             <button type="submit" class="button btn btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;">
-                                Đăng nhập
+                                Đăng ký
                             </button>
                                 
-                            <p class="small fw-bold mt-2 pt-1 mb-0">Chưa có tài khoản? <a href="?act=register" class="link-danger">Đăng ký tại đây</a></p>                          
+                            <p class="small fw-bold mt-2 pt-1 mb-0">Đã có tài khoản? <a href="?act=login" class="link-danger">Đăng nhập tại đây</a></p>                          
                         </div>
                     </form>
                 </div>

@@ -4,6 +4,7 @@ function homeIndex()
 {
     $products = listAllProducts('san_pham');
 
+
     $posts = listAllBlog('bai_viet');
 
     // $catalogues = listAll('catalogues');

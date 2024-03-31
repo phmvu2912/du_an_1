@@ -15,7 +15,11 @@ $act = $_GET['act'] ?? '/';
 
 // Biến này cần khai báo được link cần đăng nhập mới vào được
 $arrRouteNeedAuth = [
-    'cart-add','cart-list','cart-inc','cart-dec','cart-del',
+    'cart-add',
+    'cart-list',
+    'cart-inc',
+    'cart-dec',
+    'cart-del',
 
 
 
@@ -26,10 +30,10 @@ $arrRouteNeedAuth = [
 middleware_auth_check($act, $arrRouteNeedAuth);
 
 match ($act) {
-     //Authen
-     'login' => authenShowFormLogin(),
-     'logout' => authenLogout(),
- 
+    //Authen
+    'login' => authenShowFormLogin(),
+    'logout' => authenLogout(),
+    'register' => authenRegister(),
 
     // Routers Client
     '/' => homeIndex(),
@@ -49,7 +53,11 @@ match ($act) {
     'cart-dec' => cartDec($_GET['id']),
     'cart-del' => cartDel($_GET['id']),
 
-   
+    // Đặt hàng
+    'order-checkout' => orderCheckout(),
+    'order-purchase' => orderPurchase(),
+
+
 };
 
 require_once './commons/disconnect-db.php';

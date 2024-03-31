@@ -53,6 +53,10 @@
                                         <button type='button' onclick="return confirm('Bạn có muốn xóa <?= $item['ten_sp'] ?> khỏi giỏ hàng không?')" title="Xóa">
                                             <a href="<?= BASE_URL . '?act=cart-del&id=' . $item['id_sp'] ?>"><i class="fa-solid fa-trash" style="color: #ff0000;"></i></a>    
                                         </button>
+                                        <hr style="margin: 10px">
+                                        <button type='button'>
+                                            <a href="<?= BASE_URL . '?act=order-checkout' ?>">Mua ngay</a>    
+                                        </button>
                                     </td>
                                 </tr>
                             <?php endforeach ?>

@@ -23,7 +23,28 @@ function newsEdit($id)
         $data = [
             'tieu_de' => $_POST['heading'],
             'noi_dung' => $_POST['content'],
+            'thumbnail' => $_FILES['thumbnail']
         ];
+
+        $thumbnail = $_FILES['thumbnail'];
+
+        if ($thumbnail['size'] > 0) {
+            // // Xóa ảnh cũ khi phát hiện người dùng upload ảnh mới
+            // if(file_exists($thumbnailPathOld)) {
+            //     unlink($thumbnailPathOld);
+            // }
+
+            $thumbnailPath = 'uploads/blog/' . time() . '-' . basename($thumbnail['name']);
+
+            if (move_uploaded_file($thumbnail['tmp_name'], PATH_UPLOAD . $thumbnailPath)) {
+                $data['thumbnail'] = $thumbnailPath;
+            } else {
+                $data['thumbnail'] = null;
+            }
+        } else {
+            $thumbnailPath = $post['thumbnail'];
+            $data['thumbnail'] = $thumbnailPath;
+        }
 
 
         // debug($data);
@@ -45,6 +66,8 @@ function newsEdit($id)
 
 function newsCreate()
 {
+    
+
     // Submit
     if (!empty ($_POST)) {
         // debug($_POST);
@@ -53,18 +76,22 @@ function newsCreate()
             'noi_dung' => $_POST['content'],
         ];
 
-        // // upload 1 ảnh
-        // $thumbnail = $_FILES['thumbnail'] ?? null;
+        
 
-        // if (!empty ($thumbnail)) {
-        //     $thumbnailPath = 'uploads/blog/' . uniqid() . '-' . basename($thumbnail['name']);
+        // upload 1 ảnh
+        $thumbnail = $_FILES['thumbnail'] ?? null;
 
-        //     if (move_uploaded_file($thumbnail["tmp_name"], PATH_UPLOAD . $thumbnailPath)) {
-        //         $data['thumbnail'] = $thumbnailPath;
-        //     } else {
-        //         $data['thumbnail'] = null;
-        //     }
-        // }
+        if (!empty ($thumbnail)) {
+            $thumbnailPath = 'uploads/blog/' . time() . '-' . basename($thumbnail['name']);
+
+            if (move_uploaded_file($thumbnail["tmp_name"], PATH_UPLOAD . $thumbnailPath)) {
+                $data['thumbnail'] = $thumbnailPath;
+            } else {
+                $data['thumbnail'] = null;
+            }
+        }
+
+        // debug($_FILES['thumbnail']);die;
 
         insert('bai_viet', $data);
 

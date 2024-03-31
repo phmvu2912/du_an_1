@@ -9,7 +9,7 @@
 
     <!-- Content Row -->
     <div class="row">
-        <form action="" method="POST" class="row g-3">
+        <form action="" method="POST" enctype="multipart/form-data" class="row g-3">
             <!-- Tên bài viết -->
             <div class="col-12">
                 <label for="inputHeading" class="form-label font-weight-bold">Nhập tên tiêu đề:</label>

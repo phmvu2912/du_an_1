@@ -47,28 +47,28 @@
             </section>
 
             <!-- Shop  -->
-            <section>
+            <section style="margin-top: 100px">
                 <div class="home-content">
-                    <div class="content-heading">
-                        <h2>Shop</h2>
+                    <div class="content-heading" style="text-align: center">
+                        <h2>Bộ sưu tập mùa Xuân 2024</h2>
                     </div>
 
                     <div class="shop_content-body">
                         <div class="shop">
                             <div class="shop-col">
-                                <img src="./images/shop-1.jpg" alt="">
+                                <img src="<?= BASE_URL . 'uploads/banner/banner-1.jpg'?>" alt="">
                             </div>
 
                             <div class="shop-col">
-                                <img src="./images/shop-2.jpg" alt="">
+                                <img src="<?= BASE_URL . 'uploads/banner/banner-2.jpg'?>" alt="">
                             </div>
 
                             <div class="shop-col">
-                                <img src="./images/shop-3.jpg" alt="">
+                                <img src="<?= BASE_URL . 'uploads/banner/banner-3.jpg'?>" alt="">
                             </div>
 
                             <div class="shop-col">
-                                <img src="./images/shop-4.jpg" alt="">
+                                <img src="<?= BASE_URL . 'uploads/banner/banner-4.jpg'?>" alt="">
                             </div>
                         </div>
                     </div>
@@ -84,26 +84,29 @@
 
                     <div class="blog_content-body">
                         <div class="post">
-                            <div class="post-item">
-                                <div class="post-img">
-                                    <img src="./images/post-1.jpg" alt="">
-                                </div>
+                            <?php foreach($posts as $p) : ?>
+                                <div class="post-item">
+                                    <div class="post-img">
+                                        <img src="<?= $p['thumbnail'] ?>" width="600px" alt="">
+                                    </div>
 
-                                <div class="post-details">
-                                    <p class="post-title">THE ULTIMATE SOFA BUYING GUIDE</p>
-                                    <p class="post-desc">
-                                        Your level of comfort when geting into and out of bed can be
-                                        greatly influenced by the bed frame you choose. It may significantly affect how
-                                        want your bedroom to feet and look
-                                    </p>
-                                    <div class="post-link">
-                                        <a href="">ABOUT</a>
-                                        <img src="./images/icon-next.svg" alt="">
+                                    <div class="post-details">
+                                        <p class="post-title"><?= $p['tieu_de'] ?></p>
+                                        <p class="post-desc">
+                                            <?php 
+                                                $previewBlog = substr($p['noi_dung'], 0, 205);
+                                            ?>
+                                            <?= $previewBlog . '...' ?>
+                                        </p>
+                                        <div class="post-link">
+                                            <a href="">Xem chi tiết</a>
+                                            <img src="<?= BASE_URL . 'assets/client/images/icon-next.svg'?>" width="20px">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            <?php endforeach ?>
 
-                            <div class="post-item">
+                            <!-- <div class="post-item">
                                 <div class="post-img">
                                     <img src="./images/post-2.jpg" alt="">
                                 </div>
@@ -139,7 +142,7 @@
                                         <img src="./images/icon-next.svg" alt="">
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>

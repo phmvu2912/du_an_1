@@ -45,23 +45,23 @@
                             <p>5 Customer Review</p>
                         </div>
                     </div> -->
-
-                    <!-- <div class="description">
-                        <p>
-                            Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact,
-                            stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended
-                            highs for a sound.
-                        </p>
-                    </div> -->
                     <br>
 
                     <div class="size">
                         <p>Bảng size</p>
 
                         <div class="size-btn">
+                            <!-- <button>XS</button>
+                            <button>S</button>
+                            <button>M</button>
                             <button>L</button>
-                            <button>XL</button>
-                            <button>XS</button>
+                            <button>XL</button> -->
+
+                            <?php
+                                $sizes = explode(",", $product['sizes']);
+                                foreach ($sizes as $s) : ?>
+                                <button><?= $s ?></button>
+                            <?php endforeach ?>
                         </div>
                     </div>
                     
@@ -78,11 +78,11 @@
 
                     <div class="actions">
                         <div class="quantity">
-                            <input type="number" min=1>
+                            <input type="number" id="qty" value="0">                           
                         </div>
 
                         <div class="add">
-                            <button><a href="./cart.html">Thêm vào giỏ</a></button>
+                            <button><a href="<?= BASE_URL . '?act=cart-add&id=' . $item['id_sp'] . '&quantity=1' ?>">Thêm vào giỏ</a></button>
                         </div>
 
                         <div class="compare">
@@ -351,5 +351,18 @@
             }
             // Thêm lớp active vào tab được nhấp
             evt.currentTarget.classList.add("active");
+        }
+
+
+
+        // Tăng giảm số lượng sp
+        let qty = document.getElementById('qty');
+
+        const up = () => {
+            qty.value = parseInt(qty.value) + 1;
+        }
+
+        const down = () => {
+            qty.value = parseInt(qty.value) - 1;
         }
     </script>
