@@ -84,11 +84,11 @@ if (!function_exists('remoteAllCartItem')) {
     {
         try {
             // Xóa toàn bộ mục trong bảng cart_items có cart_id tương ứng
-            $sql_delete_items = "DELETE FROM cart_items WHERE cart_id = :cart_id";
+            $sql_delete_items = "DELETE FROM chi_tiet_gio_hang WHERE id_gio_hang = :id_gio_hang";
 
             $stmt_delete_items = $GLOBALS['conn']->prepare($sql_delete_items);
 
-            $stmt_delete_items->bindParam(':cart_id', $cart_id);
+            $stmt_delete_items->bindParam(':id_gio_hang', $cart_id);
 
             $stmt_delete_items->execute();
         } catch (\Exception $e) {
@@ -107,6 +107,21 @@ function deleteCartItemByCartIdAndProductId($cartID, $id)
         $stmtUpdate->bindParam(":id_gio_hang", $cartID);
 
         $stmtUpdate->bindParam(":id_sp", $id);
+
+        $stmtUpdate->execute();
+    } catch (\Exception $e) {
+        debug($e);
+    }
+}
+
+function deleteCartItemByCartId($cartID)
+{
+    try {
+        $sql = "DELETE FROM chi_tiet_gio_hang WHERE id_gio_hang = :id_gio_hang";
+
+        $stmtUpdate = $GLOBALS['conn']->prepare($sql);
+
+        $stmtUpdate->bindParam(":id_gio_hang", $cartID);
 
         $stmtUpdate->execute();
     } catch (\Exception $e) {

@@ -5,7 +5,7 @@ if (!function_exists('getUserAdminByEmailAndPassword')) {
     function getUserAdminByEmailAndPassword($email, $password)
     {
         try {
-            $sql = "SELECT * FROM nguoi_dung WHERE email = :email AND mat_khau = :password AND vai_tro = 0 LIMIT 1";
+            $sql = "SELECT * FROM nguoi_dung WHERE email = :email AND mat_khau = :password AND vai_tro = 0";
 
             $stmt = $GLOBALS['conn']->prepare($sql);
 

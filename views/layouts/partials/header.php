@@ -10,7 +10,7 @@
                 <div class="header-center">
                     <ul class="menu">
                         <li><a href="<?= BASE_URL ?>">Trang chủ</a></li>
-                        <li><a href="store.html">Sản phẩm</a></li>
+                        <li><a href="<?= BASE_URL . '?act=shop' ?>">Sản phẩm</a></li>
                         <li><a href="">Giới thiệu</a></li>
                         <li><a href="">Tin tức</a></li>
                     </ul>

@@ -21,9 +21,9 @@ $arrRouteNeedAuth = [
     'cart-dec',
     'cart-del',
 
-
-
-
+    'order-checkout',
+    'order-purchase',
+    'order-status'
 ];
 
 // Kiểm tra xem user đã đăng nhập chưa
@@ -38,7 +38,7 @@ match ($act) {
     // Routers Client
     '/' => homeIndex(),
 
-    // 'shop' => shopList(),
+    'shop' => shopList(),
     // 'about' => aboutShow(),
     // 'news' => newsList(),
 
@@ -57,7 +57,7 @@ match ($act) {
     'order-checkout' => orderCheckout(),
     'order-purchase' => orderPurchase(),
 
-
+    'order_status' => orderStatus(),
 };
 
 require_once './commons/disconnect-db.php';

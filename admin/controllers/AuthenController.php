@@ -33,7 +33,7 @@ function authenLogout() {
         session_destroy();
     }
 
-    header('Location: ' . BASE_URL_ADMIN);
+    header('Location: ' . BASE_URL);
     exit();
 }
 

@@ -17,7 +17,7 @@ $act = $_GET['act'] ?? '/';
 
 // Biến này cần khai báo được link cần đăng nhập mới vào được
 $arrRouteNeedAuth = [
-    'admin',
+    '/',
 
     'products','products-edit','products-add','products-delete','products-details',
 

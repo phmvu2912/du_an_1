@@ -22,3 +22,18 @@ define('DB_PASSWORD',       '');
 define('DB_NAME',           'wd18406');
 
 
+define('STATUS_DELIVERY_WFC',   0);
+define('STATUS_DELIVERY_WFP',   1);
+define('STATUS_DELIVERY_WFD',   2);
+define('STATUS_DELIVERY_ED',    3);
+define('STATUS_DELIVERY_CED',  -1);
+
+
+
+define('STATUS_PAYMENT_UNPAID',     0);
+define('STATUS_PAYMENT_PAID',       1);
+define('STATUS_PAYMENT_CANCELED',  -1);
+
+
+
+

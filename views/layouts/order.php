@@ -7,17 +7,18 @@
                     <h1>Thông tin đặt hàng</h1>
                 </div>
 
-                <form action="" method="">
+                <form action="?act=order-purchase" method="POST">
                     <div class="bill-body">
                         <div class="content-left">
+                            <!-- Tên người nhận hàng -->
                             <div class="form-group">
                                 <div class="form-control">
-                                    <label for="">Tên người nhận</label>
-                                    <input type="text">
+                                    <label for="user-name">Tên người nhận</label>
+                                    <input type="text" id="user-name"  name="username" value="<?= $_SESSION['user']['ten_nguoi_dung'] ?>">
                                 </div>
                             </div>
                             
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <div class="form-control">
                                     <label for="">Contry / Region</label>
                                     <select name="" id="">
@@ -27,28 +28,45 @@
                                         <option value="">Thailand</option>
                                     </select>
                                 </div>
-                            </div>
+                            </div> -->
 
+                            <!-- Địa chỉ nhận hàng -->
                             <div class="form-group">
                                 <div class="form-control">
-                                    <label for="">Địa chỉ</label>
-                                    <input type="text">
+                                    <label for="location">Địa chỉ</label>
+                                    <input type="text" id="location"  name="location" >
                                 </div>
                             </div>
 
+                            <!-- Số điện thoại người nhận -->
                             <div class="form-group">
                                 <div class="form-control">
-                                    <label for="">Số điện thoại</label>
-                                    <input type="number">
+                                    <label for="phone">Số điện thoại</label>
+                                    <input type="number" id="phone"  name="phone">
                                 </div>
                             </div>
 
+                            <!-- Email người nhận -->
                             <div class="form-group">
                                 <div class="form-control">
-                                    <label for="">Email</label>
-                                    <input type="email">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email"  name="email">
                                 </div>
                             </div> 
+
+                            <?php 
+                                $totalPrice = 0;
+                                foreach($_SESSION['cart'] as $item) : 
+
+                                $total = $item['gia_sp'] * $item['quantity'];
+
+                                $totalPrice += $total;
+                            ?>                                           
+                            <?php endforeach ?>
+
+                            <input type="number" id="totalBill"  name="totalBill" value="<?= $totalPrice ?>" hidden>
+                            
+                            
                         </div>
 
                         <div class="spacing"></div>
@@ -64,14 +82,17 @@
                                         </div>
 
                                         <div class="group-info">
-                                            <div class="info-name">
-                                                <p>Asgaard sofa</p> <span> x 1</span>
-                                            </div>
+                                            <?php foreach($_SESSION['cart'] as $item) : ?>
+                                                <div class="info-name">                                                
+                                                    <p><?= $item['ten_sp'] ?></p> <span> x <?= $item['quantity'] ?></span>                                               
+                                                </div>
+                                                
+                                            <?php endforeach ?>
                                         </div>
 
                                         <div class="group-info">
                                             <div class="info-name">
-                                                <p>Subtotal</p>
+                                                <p>Thành tiền</p>
                                             </div>
                                         </div>
 
@@ -85,26 +106,33 @@
                                     <div class="info-right">
                                         <div class="group-info">
                                             <div class="info-heading">
-                                                <p>Subtotal</p>
+                                                <p>Giá sản phẩm</p>
                                             </div>
                                         </div>
 
                                         <div class="group-info">
-                                            <div class="info-price">
-                                                <p>25.000.000đ</p>
-                                            </div>
+                                            <?php 
+                                                foreach($_SESSION['cart'] as $item) : 
+
+                                                $total = $item['gia_sp'] * $item['quantity'];
+                                            ?>
+                                                <div class="info-price">
+                                                    <p><?= number_format($total, 0, '.', '.') ?>đ</p>
+                                                </div>
+                                            <?php endforeach ?>
                                         </div>
 
                                         <div class="group-info">
+                                            
                                             <div class="info-price">
-                                                <p>25.000.000đ</p>
+                                                <p><?= number_format($totalPrice, 0, '.', '.') ?>đ</p>
                                             </div>
                                         </div>
 
                                         <div class="group-info">
                                             <div class="info-total">
-                                                <p style="color: #B88E2F;">25.000.000đ</p>
-                                            </div>
+                                                <p style="color: #B88E2F;"><?= number_format($totalPrice, 0, '.', '.') ?>đ</p>
+                                            </div> 
                                         </div>
                                     </div>
                                 </div>
@@ -139,7 +167,7 @@
                                 </p>
 
                                 <div class="form-btn">
-                                    <button>Đặt hàng</button>
+                                    <button type="submit" name="orderAdd">Đặt hàng</button>
                                 </div>
                             </div>
                         </div>

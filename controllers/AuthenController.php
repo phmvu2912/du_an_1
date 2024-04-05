@@ -54,7 +54,7 @@ function authenRegister()
         if(empty($email) && empty($pass)) {
             $status = false;
             $err = 'Không được bỏ trống!';
-        } elseif ($pass < 3) {
+        } elseif (strlen($pass) < 3) {
             $status = false;
             $err = 'Mật khẩu ít nhất chứa 5 ký tự!';
         } else {

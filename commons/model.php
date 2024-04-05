@@ -65,8 +65,7 @@ if (!function_exists('insert')) {
 }
 
 if (!function_exists('insert_get_last_id')) {
-    function insert_get_last_id($tableName, $data = [])
-    {
+    function insert_get_last_id($tableName, $data = []) {
         try {
             $strKeys = get_str_keys($data);
             $virtualParams = get_virtual_params($data);
@@ -432,6 +431,24 @@ if (!function_exists('deleteCatalog')) {
     }
 }
 
+// Xóa data của bảng giỏ hàng
+if (!function_exists('deleteCart')) {
+    function deleteCart($tableName, $id)
+    {
+        try {
+            $sql = "DELETE FROM $tableName WHERE id_nguoi_dung = :id_nguoi_dung";
+
+            $stmt = $GLOBALS['conn']->prepare($sql);
+
+            $stmt->bindParam(":id_nguoi_dung", $id);
+
+            $stmt->execute();
+        } catch (\Exception $e) {
+            debug($e);
+        }
+    }
+}
+
 // Xóa 1 bản ghi của bảng bài viết
 if (!function_exists('deleteBlog')) {
     function deleteBlog($tableName, $id)
@@ -573,6 +590,28 @@ if (!function_exists('listCommentById')) {
         }
     }
 }
+
+// Lấy danh sách bản ghi đơnhàng của bảng người dùng
+if (!function_exists('listStatusOrderByIdUser')) {
+    function listStatusOrderByIdUser($tableName, $id)
+    {
+        try {
+            // $sql = "SELECT * FROM $tableName WHERE id_sp = :id_sp";
+            $sql = "SELECT * FROM don_hang WHERE id_nguoi_dung = :id_nguoi_dung";
+
+            $stmt = $GLOBALS['conn']->prepare($sql);
+
+            $stmt->bindParam(":id_nguoi_dung", $id);
+
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+        } catch (\Exception $e) {
+            debug($e);
+        }
+    }
+}
+
 
 if (!function_exists('relatedProducts')) {
     function relatedProducts($categoryId)

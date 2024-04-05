@@ -47,23 +47,7 @@
                     </div> -->
                     <br>
 
-                    <div class="size">
-                        <p>Bảng size</p>
-
-                        <div class="size-btn">
-                            <!-- <button>XS</button>
-                            <button>S</button>
-                            <button>M</button>
-                            <button>L</button>
-                            <button>XL</button> -->
-
-                            <?php
-                                $sizes = explode(",", $product['sizes']);
-                                foreach ($sizes as $s) : ?>
-                                <button><?= $s ?></button>
-                            <?php endforeach ?>
-                        </div>
-                    </div>
+                    
                     
                     <br>
 
