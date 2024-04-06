@@ -128,6 +128,8 @@ if (!function_exists('listAllProducts')) {
     }
 }
 
+
+
 // Lấy toàn bộ bản ghi của bảng danh mục
 if (!function_exists('listAllBlog')) {
     function listAllBlog($tableName)
@@ -597,7 +599,14 @@ if (!function_exists('listStatusOrderByIdUser')) {
     {
         try {
             // $sql = "SELECT * FROM $tableName WHERE id_sp = :id_sp";
-            $sql = "SELECT * FROM don_hang WHERE id_nguoi_dung = :id_nguoi_dung";
+            // $sql = "SELECT * FROM don_hang WHERE id_nguoi_dung = :id_nguoi_dung";
+
+            $sql = "SELECT dh.*, ctdh.id_chi_tiet_don_hang, ctdh.id_sp, ctdh.so_luong, ctdh.don_gia, sp.ten_sp, sp.thumbnail
+            FROM don_hang dh
+            JOIN chi_tiet_don_hang ctdh ON dh.id_don_hang = ctdh.id_don_hang
+            JOIN san_pham sp ON ctdh.id_sp = sp.id_sp
+            WHERE dh.id_nguoi_dung = :id_nguoi_dung            
+            ";
 
             $stmt = $GLOBALS['conn']->prepare($sql);
 

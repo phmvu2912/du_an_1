@@ -133,6 +133,38 @@ function orderStatus()
 
     $statusOrder = listStatusOrderByIdUser('don_hang', $id_user);
 
+    foreach ($statusOrder as $item) {
+        $statusDelivery = $item['trang_thai_giao_hang'];
+        $statusD = '';
+
+        $statusPayment = $item['trang_thai_thanh_toan'];
+        $statusP = '';
+    }
+    
+    
+
+    if($statusDelivery == 0) {
+        $statusD = 'Chưa xác nhận';
+    } elseif ($statusDelivery == 1) {
+        $statusD = 'Đã xác nhận';
+    } elseif ($statusDelivery == 2) {
+        $statusD = 'Đang vận chuyển';
+    } elseif ($statusDelivery == 3) {
+        $statusD = 'Đã nhận';
+    } else {
+        $statusD = 'Đã hủy';
+    }
+
+    if($statusPayment == 0) {
+        $statusP = 'Chưa thanh toán';
+    } elseif ($statusPayment == 1) {
+        $statusP = 'Đã thanh toán';
+    } else {
+        $statusP = 'Đã hủy';
+    }
+
+    // debug($status);die;
+
     // debug($statusOrder);die;
 
     $title = 'Tình trạng đơn hàng';

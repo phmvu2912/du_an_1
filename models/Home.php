@@ -57,3 +57,25 @@ if (!function_exists('getSearchProduct')) {
         }
     }
 }
+
+
+// Lấy toàn bộ bản ghi của bảng sản phẩm
+if (!function_exists('listAllProductsByDESC')) {
+    function listAllProductsByDESC($tableName)
+    {
+        try {
+            $sql = "SELECT $tableName.*, danh_muc.ten_dm 
+            FROM $tableName 
+            INNER JOIN danh_muc 
+            ON $tableName.id_danh_muc = danh_muc.id_danh_muc ORDER BY id_sp DESC LIMIT 4";
+
+            $stmt = $GLOBALS['conn']->prepare($sql);
+
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+        } catch (\Exception $e) {
+            debug($e);
+        }
+    }
+}

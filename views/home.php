@@ -8,39 +8,39 @@
 
                     <div class="new_content-body">
                         <?php foreach ($products as $item): ?>
-                                    <div class="card">                               
-                                        <img class="card-img" src="<?= $item['thumbnail'] ?>" alt="">
-                                        <div class="card-info">
-                                            <p class="info-name"><?= $item['ten_sp'] ?></p>
-                                            <p class="info-category"><?= $item['ten_dm'] ?></p>
-                                            <p class="info-price"><?= number_format($item['gia_sp'], 0, '.', '.') ?>đ</p>
-                                        </div>                  
-                                        <div class="card-action">
-                                            <div class="group">
-                                                <div class="addtocart">
-                                                    <button><a href="<?= BASE_URL . '?act=cart-add&id=' . $item['id_sp'] . '&quantity=1' ?>">Thêm vào giỏ hàng</a></button>
-                                                </div>
-
-                                                <div class="addtocart">
-                                                    <button><a href="?act=details&id=<?= $item['id_sp'] ?>">Chi tiết sản phẩm</a></button>
-                                                </div>
-
-                                                <div class="sub-act">
-                                                    <a href="" class="act-share">
-                                                        <img src="<?= BASE_URL ?>assets/client/images/icon-share.svg" alt="">
-                                                        <p>Chia sẻ</p>
-                                                    </a>
-                                                    <a href="act-compare">
-                                                        <img src="<?= BASE_URL ?>assets/client/images/icon-compare.svg" alt="">
-                                                    </a>
-                                                    <a href="" class="act-like">
-                                                        <img src="<?= BASE_URL ?>assets/client/images/icon-heart.svg" alt="">
-                                                        <p>Thích</p>
-                                                    </a>
-                                                </div>
-                                            </div>                           
+                            <div class="card">                               
+                                <img class="card-img" src="<?= $item['thumbnail'] ?>" alt="">
+                                <div class="card-info">
+                                    <p class="info-name"><?= $item['ten_sp'] ?></p>
+                                    <p class="info-category"><?= $item['ten_dm'] ?></p>
+                                    <p class="info-price"><?= number_format($item['gia_sp'], 0, '.', '.') ?>đ</p>
+                                </div>                  
+                                <div class="card-action">
+                                    <div class="group">
+                                        <div class="addtocart">
+                                            <button><a href="<?= BASE_URL . '?act=cart-add&id=' . $item['id_sp'] . '&quantity=1' ?>">Thêm vào giỏ hàng</a></button>
                                         </div>
-                                    </div>
+
+                                        <div class="addtocart">
+                                            <button><a href="?act=details&id=<?= $item['id_sp'] ?>">Chi tiết sản phẩm</a></button>
+                                        </div>
+
+                                        <div class="sub-act">
+                                            <a href="" class="act-share">
+                                                <img src="<?= BASE_URL ?>assets/client/images/icon-share.svg" alt="">
+                                                <p>Chia sẻ</p>
+                                            </a>
+                                            <a href="act-compare">
+                                                <img src="<?= BASE_URL ?>assets/client/images/icon-compare.svg" alt="">
+                                            </a>
+                                            <a href="" class="act-like">
+                                                <img src="<?= BASE_URL ?>assets/client/images/icon-heart.svg" alt="">
+                                                <p>Thích</p>
+                                            </a>
+                                        </div>
+                                    </div>                           
+                                </div>
+                            </div>
                         <?php endforeach ?>
                     </div>
                 </div>

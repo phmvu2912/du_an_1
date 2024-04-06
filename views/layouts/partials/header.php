@@ -20,7 +20,7 @@
                     <ul class="icons">
                         <li><a href=""><img src="<?= BASE_URL ?>assets/client/images/icon-search.svg" alt=""></a></li>
                         <li><a href="<?= BASE_URL . '?act=cart-list' ?>"><img src="<?= BASE_URL ?>assets/client/images/icon-cart.svg"></a></li>
-                        <li><a href=""><img src="<?= BASE_URL ?>assets/client/images/icon-user.svg"></a></li>
+                        <li><a href="?act=profile"><img src="<?= BASE_URL ?>assets/client/images/icon-user.svg"></a></li>
                     </ul>
                 </div>
             </div>

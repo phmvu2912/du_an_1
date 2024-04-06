@@ -21,41 +21,24 @@
                             <?php
                             $i = 1;
                             $totalPrice = 0;
-                            foreach ($statusOrder as $item):
-                                $total = $item['gia_sp'] * $item['quantity'];
-                                $totalPrice += $total;
-                                ?>
-                                    <tr>
-                                        <td><?= $i++ ?></td>
-                                        <td><?= $item['ten_sp'] ?></td>
-                                        <td>
-                                            <div class="cart-img">
-                                                <img src="<?= $item['thumbnail'] ?>" width="150px" alt="">
-                                            </div>
-                                        </td>                                
-                                        <td><?= number_format($item['gia_sp'], 0, '.', '.') ?>đ</td>
-                                        <td>
-                                            <button type='button' title="Giảm số lượng">
-                                                <a href="<?= BASE_URL . '?act=cart-dec&id=' . $item['id_sp'] ?>">
-                                                    <i class="fa-solid fa-minus"></i>
-                                                </a>
-                                            </button>
-                                            &nbsp;
-                                            <span><?= $item['quantity'] ?></span>
-                                            &nbsp;
-                                            <button type='button' title="Tăng số lượng">
-                                                <a href="<?= BASE_URL . '?act=cart-inc&id=' . $item['id_sp'] ?>">
-                                                    <i class="fa-solid fa-plus"></i>
-                                                </a>
-                                            </button>
-                                        </td>
-                                        <td><?= number_format($total, 0, '.', '.') ?>đ</td>
-                                        <td>
-                                            <button type='button' onclick="return confirm('Bạn có muốn xóa <?= $item['ten_sp'] ?> khỏi giỏ hàng không?')" title="Xóa">
-                                                <a href="<?= BASE_URL . '?act=cart-del&id=' . $item['id_sp'] ?>"><i class="fa-solid fa-trash" style="color: #ff0000;"></i></a>    
-                                            </button>                                        
-                                        </td>
-                                    </tr>
+                            foreach ($statusOrder as $item):                      
+                                $subTotal = $item['don_gia'] * $item['so_luong'];
+                                $totalPrice += $subTotal;
+                            ?>
+                                <tr>
+                                    <td><?= $i++ ?></td>
+                                    <td><?= $item['ten_sp'] ?></td>
+                                    <td>
+                                        <div class="cart-img">
+                                            <img src="<?= $item['thumbnail'] ?>" width="150px" alt="">
+                                        </div>
+                                    </td>                                
+                                    <td><?= number_format($item['don_gia'], 0, '.', '.') ?>đ</td>
+                                    <td><?= $item['so_luong'] ?></td>
+                                    <td><?= number_format($subTotal, 0, '.', '.') ?>đ</td>
+                                    <td><?= $statusD ?></td>
+                                    <td><?= $statusP ?></td>
+                                </tr>
                             <?php endforeach ?>
                         </tbody>
                     </table>
@@ -74,7 +57,7 @@
                         </div>
                         <div class="buy-now">
                             <button type='button'>
-                                <a href="<?= BASE_URL . '?act=order-checkout' ?>">Đặt hàng</a>    
+                                <a href="<?= BASE_URL . '?act=order-checkout' ?>">Thanh toán</a>    
                             </button>
                         </div>
                     </div>

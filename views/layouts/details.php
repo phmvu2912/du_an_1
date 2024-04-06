@@ -199,107 +199,43 @@
                     <p>Sản phẩm liên quan</p>
                 </div>
 
-                <div class="related-content">
+                <div class="related-content">              
                     <div class="group-cards">
-                        <div class="card">
-                            <img class="card-img" src="./images/img1.jpg" alt="">
-                            <div class="card-info">
-                                <p class="info-name">Syltherine</p>
-                                <p class="info-category">Stylish cafe chair</p>
-                                <p class="info-price">2.500.000dd</p>
-                            </div>                  
-                            <div class="card-action">
-                                <div class="group">
-                                    <div class="btn-act">
-                                        <button><a href="./cart.html">Add to cart</a></button>
-                                    </div>
-    
-                                    <!-- <div class="btn-act">
-                                        <button><a href="./cart.html">View products</a></button>
-                                    </div> -->
-    
-                                    <div class="sub-act">
-                                        <button><a href="">View product</a></button>
-                                    </div>
-                                </div>                           
-                            </div>
-                        </div>
-    
-                        <div class="card">
-                            <img class="card-img" src="./images/img1.jpg" alt="">
-                            <div class="card-info">
-                                <p class="info-name">Syltherine</p>
-                                <p class="info-category">Stylish cafe chair</p>
-                                <p class="info-price">2.500.000dd</p>
-                            </div>                  
-                            <div class="card-action">
-                                <div class="group">
-                                    <div class="btn-act">
-                                        <button><a href="./cart.html">Add to cart</a></button>
-                                    </div>
-    
-                                    <!-- <div class="btn-act">
-                                        <button><a href="./cart.html">View products</a></button>
-                                    </div> -->
-    
-                                    <div class="sub-act">
-                                        <button><a href="">View product</a></button>
-                                    </div>
-                                </div>                           
-                            </div>
-                        </div>
-    
-                        <div class="card">
-                            <img class="card-img" src="./images/img1.jpg" alt="">
-                            <div class="card-info">
-                                <p class="info-name">Syltherine</p>
-                                <p class="info-category">Stylish cafe chair</p>
-                                <p class="info-price">2.500.000dd</p>
-                            </div>                  
-                            <div class="card-action">
-                                <div class="group">
-                                    <div class="btn-act">
-                                        <button><a href="./cart.html">Add to cart</a></button>
-                                    </div>
-    
-                                    <!-- <div class="btn-act">
-                                        <button><a href="./cart.html">View products</a></button>
-                                    </div> -->
-    
-                                    <div class="sub-act">
-                                        <button><a href="">View product</a></button>
-                                    </div>
-                                </div>                           
-                            </div>
-                        </div>
-    
-                        <div class="card">
-                            <img class="card-img" src="./images/img1.jpg" alt="">
-                            <div class="card-info">
-                                <p class="info-name">Syltherine</p>
-                                <p class="info-category">Stylish cafe chair</p>
-                                <p class="info-price">2.500.000dd</p>
-                            </div>                  
-                            <div class="card-action">
-                                <div class="group">
-                                    <div class="btn-act">
-                                        <button><a href="./cart.html">Add to cart</a></button>
-                                    </div>
-    
-                                    <!-- <div class="btn-act">
-                                        <button><a href="./cart.html">View products</a></button>
-                                    </div> -->
-    
-                                    <div class="sub-act">
-                                        <button><a href="">View product</a></button>
-                                    </div>
-                                </div>                           
-                            </div>
-                        </div>
-                    </div>
+                        <?php foreach($listProductsByIdCatalog as $prods) : ?>
+                            <div class="card">                               
+                                <img class="card-img" src="<?= $prods['thumbnail'] ?>" alt="">
+                                <div class="card-info">
+                                    <p class="info-name"><?= $prods['ten_sp'] ?></p>
+                                    <p class="info-category"><?= $prods['ten_dm'] ?></p>
+                                    <p class="info-price"><?= number_format($prods['gia_sp'], 0, '.', '.') ?>đ</p>
+                                </div>                  
+                                <div class="card-action">
+                                    <div class="group">
+                                        <div class="addtocart">
+                                            <button><a href="<?= BASE_URL . '?act=cart-add&id=' . $prods['id_sp'] . '&quantity=1' ?>">Thêm vào giỏ hàng</a></button>
+                                        </div>
 
-                    <div class="btn-more">
-                        <button>Show more</button>
+                                        <div class="addtocart">
+                                            <button><a href="?act=details&id=<?= $prods['id_sp'] ?>">Chi tiết sản phẩm</a></button>
+                                        </div>
+
+                                        <div class="sub-act">
+                                            <a href="" class="act-share">
+                                                <img src="<?= BASE_URL ?>assets/client/images/icon-share.svg" alt="">
+                                                <p>Chia sẻ</p>
+                                            </a>
+                                            <a href="act-compare">
+                                                <img src="<?= BASE_URL ?>assets/client/images/icon-compare.svg" alt="">
+                                            </a>
+                                            <a href="" class="act-like">
+                                                <img src="<?= BASE_URL ?>assets/client/images/icon-heart.svg" alt="">
+                                                <p>Thích</p>
+                                            </a>
+                                        </div>
+                                    </div>                           
+                                </div>
+                            </div> 
+                        <?php endforeach ?>
                     </div>
                 </div>
             </div>

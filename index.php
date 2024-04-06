@@ -58,6 +58,10 @@ match ($act) {
     'order-purchase' => orderPurchase(),
 
     'order_status' => orderStatus(),
+
+    // Trang cá nhân
+    'profile' => profilePage(),
+    
 };
 
 require_once './commons/disconnect-db.php';

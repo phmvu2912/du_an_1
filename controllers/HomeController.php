@@ -2,7 +2,7 @@
 
 function homeIndex()
 {
-    $products = listAllProducts('san_pham');
+    $products = listAllProductsByDESC('san_pham');
 
 
     $posts = listAllBlog('bai_viet');
