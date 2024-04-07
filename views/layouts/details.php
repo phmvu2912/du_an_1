@@ -140,15 +140,16 @@
                     </p>
                 </div>
 
-                <div id='comments' class="tabs-body" style="display:none;">     
+                <div id='comments' class="tabs-body" style="display:none;"> 
+                <?php if(isset($_SESSION['user'])) { ?>
                     <div class="cmt-input">
                         <div class="cmt-heading">
                         <p>Nhập bình luận</p>
                     </div>
-                    <form action="" method="POST">
+                    <form action="?act=comment-post" method="POST">
                         <div class="form-group">
                             <div class="form-control">
-                                <input type="hidden" value="<?= $product['id_sp'] ?>">
+                                <input type="hidden" name="id_sp" value="<?= $product['id_sp'] ?>">
                                 <textarea rows=5 name="content" placeholder="Viết bình luận tại đây..."></textarea>
                             </div>
                             <div class="form-btn">
@@ -161,33 +162,41 @@
                     <div class='cmt-heading'>
                         <p>Bình luận</p>
                     </div>
-
-                    <div class="list-cmt">
-                        <?php foreach ($feedbacks as $cmt) : ?>
-                            <div class="cmt">
-                                <div class="avt">
-                                    <img src="" alt="">
+                <?php } else { ?>
+                    <p style="text-align: center; font-size: 18px; margin: 0 0 20px 0">Đăng nhập để viết bình luận! <a style="text-decoration: underline" href="?act=login">Đăng nhập ngay</a></p>
+                <?php } ?>  
+                    
+                    
+                    <?php if ($feedbacks == null) { ?>
+                        <p style="text-align: center; font-size: 18px">Sản phẩm tạm thời chưa có bình luận!</p>
+                    <?php } else { ?>
+                        <div class="list-cmt">
+                            <?php foreach ($feedbacks as $cmt) : ?>
+                                <div class="cmt">
+                                    <div class="avt">
+                                        <img src="<?= BASE_URL ?>assets/client/images/icon-personal.svg" width='25px'>
+                                    </div>
+    
+                                <div class="cmt-content">
+                                    <b><?= $cmt['ten_nguoi_dung'] ?></b>
+                                    <p><?= $cmt['noi_dung'] ?></p>
                                 </div>
-
-                            <div class="cmt-content">
-                                <b><?= $cmt['ten_nguoi_dung'] ?></b>
-                                <p><?= $cmt['noi_dung'] ?></p>
+    
+                                <div class="acts">
+                                    <div class="like-cmt">
+                                        <img src="" alt="">
+                                        <p>Hữu ích</p>
+                                    </div>
+    
+                                    <div class="like-cmt">
+                                        <img src="" alt="">
+                                        <p>Báo cáo</p>
+                                    </div>
+                                </div>
                             </div>
-
-                            <div class="acts">
-                                <div class="like-cmt">
-                                    <img src="" alt="">
-                                    <p>Hữu ích</p>
-                                </div>
-
-                                <div class="like-cmt">
-                                    <img src="" alt="">
-                                    <p>Báo cáo</p>
-                                </div>
-                            </div>
-                        </div>
-                        <?php endforeach ?>
-                    </div>                  
+                            <?php endforeach ?>
+                        </div>                  
+                    <?php } ?>
                 </div>
             </div>
         </section>

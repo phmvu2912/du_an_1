@@ -2,12 +2,15 @@
 
 function orderCheckout()
 {
+    $vouchers = listAllVouchers('khuyen_mai');
+
+    // debug($vouchers);die;
 
     if (isset($_SESSION['cart'])) {
     }
 
 
-    $title = 'Thanh toán';
+    $title = 'Đặt hàng';
     $view = 'layouts/order';
 
     require_once PATH_VIEW . 'layouts/master.php';
@@ -132,36 +135,10 @@ function orderStatus()
 
 
     $statusOrder = listStatusOrderByIdUser('don_hang', $id_user);
-
-    foreach ($statusOrder as $item) {
-        $statusDelivery = $item['trang_thai_giao_hang'];
-        $statusD = '';
-
-        $statusPayment = $item['trang_thai_thanh_toan'];
-        $statusP = '';
-    }
     
     
 
-    if($statusDelivery == 0) {
-        $statusD = 'Chưa xác nhận';
-    } elseif ($statusDelivery == 1) {
-        $statusD = 'Đã xác nhận';
-    } elseif ($statusDelivery == 2) {
-        $statusD = 'Đang vận chuyển';
-    } elseif ($statusDelivery == 3) {
-        $statusD = 'Đã nhận';
-    } else {
-        $statusD = 'Đã hủy';
-    }
-
-    if($statusPayment == 0) {
-        $statusP = 'Chưa thanh toán';
-    } elseif ($statusPayment == 1) {
-        $statusP = 'Đã thanh toán';
-    } else {
-        $statusP = 'Đã hủy';
-    }
+    
 
     // debug($status);die;
 
@@ -171,4 +148,10 @@ function orderStatus()
     $view = 'layouts/order_status';
 
     require_once PATH_VIEW . 'layouts/master.php';
+}
+
+function orderCancel($id) {
+    cancelOrderById('don_hang', $id);
+
+    header('Location: ' . BASE_URL . '?act=order_status');
 }

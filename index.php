@@ -23,7 +23,9 @@ $arrRouteNeedAuth = [
 
     'order-checkout',
     'order-purchase',
-    'order-status'
+    'order-status',
+
+    'comment-post'
 ];
 
 // Kiểm tra xem user đã đăng nhập chưa
@@ -44,7 +46,7 @@ match ($act) {
 
     // Chi tiết sản phẩm
     'details' => detailsShow($_GET['id']),
-    // 'comment-post' => postComment($_GET['id']),
+    'comment-post' => postComment(),
 
     // giỏ hàng
     'cart-add' => cartAdd($_GET['id'], $_GET['quantity']),
@@ -56,8 +58,9 @@ match ($act) {
     // Đặt hàng
     'order-checkout' => orderCheckout(),
     'order-purchase' => orderPurchase(),
-
     'order_status' => orderStatus(),
+    'order_cancel' => orderCancel($_GET['id']),
+    'select-voucher' => selectVoucher(),
 
     // Trang cá nhân
     'profile' => profilePage(),

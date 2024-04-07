@@ -408,8 +408,11 @@ hr {
   width: 50px;
   height: 50px;
   border-radius: 100px;
-  background-color: #B88E2F;
+  background-color: #9F9F9F;
   margin: 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .tabs-body .cmt .cmt-content {
   flex: 1;
@@ -514,7 +517,74 @@ hr {
 }
 .bill-body .content-right .bill-info .info-content {
   display: flex;
+  flex-direction: column;
+}
+.bill-body .content-right .bill-info .info-content .content-heading {
+  display: flex;
   justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.bill-body .content-right .bill-info .info-content .content-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+}
+.bill-body .content-right .bill-info .info-content .content-item .container-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 7px;
+}
+.bill-body .content-right .bill-info .info-content .content-item .info-name {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.bill-body .content-right .bill-info .info-content .content-item .info-price {
+  text-align: right;
+}
+.bill-body .content-right .bill-info .info-content .voucher-item b {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+.bill-body .content-right .bill-info .info-content .voucher-item .selectVoucher select {
+  text-align: center;
+}
+.bill-body .content-right .bill-info .info-content .voucher-item .selectVoucher option {
+  padding: 10px 0;
+  min-width: 200px;
+}
+.bill-body .content-right .bill-info .info-content .info-left .addVoucher {
+  display: flex;
+  flex-direction: column;
+}
+.bill-body .content-right .bill-info .info-content .info-left .addVoucher b {
+  margin-bottom: 5px;
+}
+.bill-body .content-right .bill-info .info-content .info-left .addVoucher .selectVoucher {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.bill-body .content-right .bill-info .info-content .info-left .addVoucher .selectVoucher select {
+  padding: 7px;
+  min-width: 200px;
+}
+.bill-body .content-right .bill-info .info-content .info-left .addVoucher .selectVoucher option {
+  text-align: center;
+}
+.bill-body .content-right .bill-info .info-content .info-left .addVoucher .selectVoucher button {
+  background-color: #B88E2F;
+  padding: 7px 10px;
+  border: 1px solid #B88E2F;
+  cursor: pointer;
+}
+.bill-body .content-right .bill-info .info-content .info-left .addVoucher .selectVoucher button:hover {
+  background-color: #faf3ea;
 }
 .bill-body .content-right .bill-info .info-content .info-left,
 .bill-body .content-right .bill-info .info-content .info-right {

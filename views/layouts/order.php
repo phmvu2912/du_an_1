@@ -14,7 +14,7 @@
                             <div class="form-group">
                                 <div class="form-control">
                                     <label for="user-name">Tên người nhận</label>
-                                    <input type="text" id="user-name"  name="username" value="<?= $_SESSION['user']['ten_nguoi_dung'] ?>">
+                                    <input type="text" id="user-name"  name="username" value="<?= $_SESSION['user']['ten_nguoi_dung'] ?>" required>
                                 </div>
                             </div>
                             
@@ -74,9 +74,71 @@
                         <div class="content-right">
                             <div class="bill-info">
                                 <div class="info-content">
-                                    <div class="info-left">
+                                    <div class="content-heading">
+                                        <b>Sản phẩm</b>
+
+                                        <b>Giá sản phẩm</b>
+                                    </div>
+
+                                    <div class="content-item">
+                                        <!-- Tên sp -->
+                                        <div class="container-item">
+                                            <?php foreach($_SESSION['cart'] as $item) : ?>
+                                                <div class="info-name">                                                
+                                                    <p><?= $item['ten_sp'] ?></p> <span> x <?= $item['quantity'] ?></span>                                               
+                                                </div>                                           
+                                            <?php endforeach ?>
+                                        </div>
+                                        
+                                        <div class="container-item">
+                                            <!-- Giá sp -->
+                                            <?php 
+                                                foreach($_SESSION['cart'] as $item) : 
+
+                                                $total = $item['gia_sp'] * $item['quantity'];
+                                            ?>
+                                                <div class="info-price">
+                                                    <p><?= number_format($total, 0, '.', '.') ?>đ</p>
+                                                </div>
+                                            <?php endforeach ?>
+                                        </div>
+                                    </div>
+
+                                    <div class="content-item" style="margin-top: 10px">
+                                        <b>Thành tiền:</b>
+                                        
+                                        <p><?= number_format($totalPrice, 0, '.', '.') ?>đ</p>
+                                    </div>
+
+                                    <!-- Chọn Voucher -->
+                                    <div class="voucher-item" style="margin-top: 10px">
+                                        <b>Chọn mã giảm giá</b>
+                                        <form action="" method='POST'>
+                                            <div class="selectVoucher">
+                                                <select name="voucher" id="">
+                                                    <option value="" selected>-- Chọn mã giảm giá --</option>
+                                                        <?php foreach($vouchers as $v) : ?>
+                                                            <option value="<?= $v['id_khuyen_mai'] ?>"><?= $v['ma_khuyen_mai'] ?></option>
+                                                        <?php endforeach ?>
+                                                </select>
+    
+                                                <input type="submit" name='check-voucher' value='Áp dụng'>
+                                            </div>
+    
+                                            <div class="value-coupon">
+    
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="content-item" style="margin-top: 10px">
+                                        <b style="font-size: 23px">Tổng tiền:</b>
+                                        
+                                        <p style="font-size: 23px; font-weight: 700; color: #B88E2F"><?= number_format($totalPrice, 0, '.', '.') ?>đ</p>
+                                    </div>
+                                    <!-- <div class="info-left">
                                         <div class="group-info">
-                                            <div class="info-heading">
+                                            <div class="info-heading" style="text-align: left">
                                                 <p>Sản phẩm</p>
                                             </div>
                                         </div>
@@ -93,6 +155,20 @@
                                         <div class="group-info">
                                             <div class="info-name">
                                                 <p>Thành tiền</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="addVoucher" style="text-align: left">
+                                            <b>Chọn mã giảm giá</b>
+                                            <div class="selectVoucher">
+                                                <select name="" id="">
+                                                    <option value="" selected>-- Chọn mã giảm giá --</option>
+                                                    <?php foreach($vouchers as $v) : ?>
+                                                        <option value="<?= $v['id_khuyen_mai'] ?>"><?= $v['ma_khuyen_mai'] ?></option>
+                                                    <?php endforeach ?>
+                                                </select>
+
+                                                <button>Áp dụng</button>
                                             </div>
                                         </div>
 
@@ -122,9 +198,15 @@
                                             <?php endforeach ?>
                                         </div>
 
-                                        <div class="group-info">
-                                            
+                                        <div class="group-info">                                            
                                             <div class="info-price">
+                                                <p><?= number_format($totalPrice, 0, '.', '.') ?>đ</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="group-info">                                            
+                                            <div class="info-price">
+                                                <p>- <?= $v['gia_tri'] ?>%</p>
                                                 <p><?= number_format($totalPrice, 0, '.', '.') ?>đ</p>
                                             </div>
                                         </div>
@@ -134,36 +216,27 @@
                                                 <p style="color: #B88E2F;"><?= number_format($totalPrice, 0, '.', '.') ?>đ</p>
                                             </div> 
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
 
                                 <hr>
-
+                                <b>Chọn phương thức thành toán</b>
                                 <div class="form-group">
                                     <div class="form-control">
                                         <input type="radio" name="payments"> Thanh toán online
                                     </div>
-                                    <p class="input-description" style="color: grey">
-                                        Make your payment directly into our bank account. Please use your Order ID
-                                        as
-                                        the payment reference. Your order will not be shipped until the funds have
-                                        cleared in our account.
-                                    </p>
                                 </div>
 
                                 <div class="form-group">
                                     <div class="form-control">
                                         <input type="radio" name="payments"> Thanh toán tiền mặt khi nhận hàng (COD)
                                     </div>
-                                    <p class="input-description">
-
-                                    </p>
                                 </div>
 
                                 <p class="privacy">
-                                    Your personal data will be used to support your experience throughout this
-                                    website, to manage access to your account, and for other purposes described in
-                                    our <a href="">privacy policy.</a>
+                                    Thông tin cá nhân của bạn sẽ được sử dụng để hỗ trợ trải nghiệm của bạn trên trang web này, 
+                                    quản lý quyền truy cập vào tài khoản của bạn và cho các mục đích khác được mô tả trong 
+                                    <a href="">chính sách bảo mật</a> của chúng tôi.
                                 </p>
 
                                 <div class="form-btn">
