@@ -1,0 +1,87 @@
+.personal {
+  margin: 0;
+}
+.personal-background {
+  background-color: #B88E2F;
+  padding: 50px 0;
+}
+.personal-info {
+  display: flex;
+  justify-content: start;
+  gap: 15px;
+}
+.personal-info img {
+  width: 100px;
+  border-radius: 100px;
+  border: 2px double grey;
+}
+.personal-info .name {
+  font-size: 23px;
+}
+.personal-info .name p {
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+.alert {
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+.alert .alert-items {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.alert .alert-items a {
+  text-decoration: underline;
+  color: #9b6f07;
+}
+.alert .alert-items a:hover {
+  color: #B88E2F;
+}
+
+.orders-heading {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.orders-heading .history-orders {
+  display: flex;
+  align-items: center;
+}
+.orders-heading .history-orders a {
+  text-decoration: underline;
+}
+.orders-heading .history-orders i {
+  margin-top: 5px;
+  font-style: 13px;
+  margin-left: 10px;
+}
+
+.orders-items {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 70px 0;
+}
+.orders-items .o-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 100px;
+  padding: 50px;
+  min-width: 150px;
+  transition: 0.5s ease-in-out;
+}
+.orders-items .o-item i {
+  font-size: 32px;
+  margin-bottom: 5px;
+}
+.orders-items .o-item:hover {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+hr {
+  border: 10px solid rgb(220, 220, 220);
+}/*# sourceMappingURL=profile.css.map */

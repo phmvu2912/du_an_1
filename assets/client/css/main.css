@@ -191,17 +191,27 @@ hr {
   margin-right: 20px;
 }
 .content-left .left-col .sub-img {
-  background-color: #F9F1E7;
-  border-radius: 5px;
+  border-radius: 10px;
   gap: 10px;
   margin-bottom: 20px;
   min-height: 70px;
   text-align: center;
 }
+.content-left .left-col .sub-img img {
+  border-radius: 10px;
+  -o-object-fit: fill;
+     object-fit: fill;
+  box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+}
 .content-left .right-col .main-img {
-  background-color: #F9F1E7;
   border-radius: 5px;
   text-align: center;
+}
+.content-left .right-col .main-img img {
+  border-radius: 20px;
+  width: 100%;
+  height: 100%;
+  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
 }
 .content-right {
   flex: 1;
@@ -281,6 +291,10 @@ hr {
   align-items: center;
   gap: 15px;
 }
+.content-right .info .actions .add {
+  display: flex;
+  flex: 1;
+}
 .content-right .info .actions .quantity {
   text-align: center;
 }
@@ -294,23 +308,14 @@ hr {
 .content-right .info .actions .add button {
   padding: 15px 50px;
   font-weight: 500;
-  border: 2px solid black;
-  background: none;
-  border-radius: 10px;
-  cursor: pointer;
-}
-.content-right .info .actions .compare button {
-  padding: 15px 50px;
-  font-weight: 500;
   border: 2px solid #B88E2F;
-  background: none;
+  background-color: #B88E2F;
   border-radius: 10px;
   cursor: pointer;
-  background-color: #B88E2F;
-  color: #000000;
+  flex: 1;
   transition: 0.5s ease-in-out;
 }
-.content-right .info .actions .compare button:hover {
+.content-right .info .actions .add button:hover {
   background-color: #f9f1e7;
   border: 2px solid #B88E2F;
 }
@@ -403,16 +408,24 @@ hr {
   gap: 15px;
   margin-bottom: 20px;
   border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 .tabs-body .cmt .avt {
   width: 50px;
   height: 50px;
-  border-radius: 100px;
+  border-radius: 50%;
   background-color: #9F9F9F;
   margin: 0 10px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.tabs-body .cmt .avt img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 100px;
 }
 .tabs-body .cmt .cmt-content {
   flex: 1;
@@ -743,6 +756,57 @@ hr {
 .pages button:hover {
   background-color: #B88E2F;
   color: white;
+}
+
+.info-edit form {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+}
+.info-edit form .info-left {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.info-edit form .info-left .img {
+  border: 1px solid #9b6f07;
+  min-width: 200px;
+  min-height: 200px;
+  margin-bottom: 10px;
+}
+.info-edit form .info-right {
+  flex: 2;
+}
+.info-edit .info-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+}
+.info-edit .info-group label {
+  min-width: 300px;
+  font-weight: 500;
+}
+.info-edit .info-group input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 5px;
+  outline: none;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border: 1px solid rgb(209, 209, 209);
+}
+.info-edit .info-btn-group {
+  display: flex;
+}
+.info-edit .info-btn-group button {
+  flex: 1;
+  padding: 12px;
+  border-radius: 5px;
+  background-color: #9b6f07;
+  border: none;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
 }
 
 section {

@@ -73,6 +73,12 @@ match ($act) {
     'vouchers-add' => voucherCreate(),
     'vouchers-delete' => voucherDelete($_GET['id']),
     'vouchers-details' => voucherListOne($_GET['id']),
+
+    // Routers Đơn hàng
+    'orders' => ordersList(),
+    'orders-details' => orderDetails($_GET['id']),
+    'orders-edit' => orderEdit($_GET['id']),
+
 };
 
 require_once '../commons/disconnect-db.php';

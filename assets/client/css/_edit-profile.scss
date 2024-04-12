@@ -1,0 +1,65 @@
+// edit
+.info-edit {
+
+    form {
+
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+
+        .info-left {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+
+            .img {
+                border: 1px solid #9b6f07;
+                min-width: 200px;
+                min-height: 200px;
+                margin-bottom: 10px;
+            }
+
+        }
+
+        .info-right {
+            flex: 2;
+        }
+    }
+
+
+    .info-group {
+        label {
+            min-width: 300px;
+            font-weight: 500;
+        }
+
+        input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 5px;
+            outline: none;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            border: 1px solid rgb(209, 209, 209);
+        }
+
+        display: flex;
+        align-items: center;
+        margin-bottom: 25px;
+    }
+
+    .info-btn-group {
+        display: flex;
+
+        button {
+            flex: 1;
+            padding: 12px;
+            border-radius: 5px;
+            background-color: #9b6f07;
+            border: none;
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+        }
+    }
+}

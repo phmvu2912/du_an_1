@@ -17,15 +17,16 @@ $act = $_GET['act'] ?? '/';
 $arrRouteNeedAuth = [
     'cart-add',
     'cart-list',
-    'cart-inc',
-    'cart-dec',
     'cart-del',
 
     'order-checkout',
     'order-purchase',
     'order-status',
 
-    'comment-post'
+    'comment-post',
+
+    'profile',
+    'profile-edit',
 ];
 
 // Kiểm tra xem user đã đăng nhập chưa
@@ -64,6 +65,7 @@ match ($act) {
 
     // Trang cá nhân
     'profile' => profilePage(),
+    'profile-edit' => profileEdit($_GET['id']),
     
 };
 

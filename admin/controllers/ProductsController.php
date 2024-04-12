@@ -93,34 +93,6 @@ function productsEdit($id)
             $data['anh_sp'] = $imagePaths;
         }
 
-        // // Upload nhiều ảnh
-        // $images = $_FILES['images'];
-
-        // if (!empty ($images['name'][0])) {
-        //     $uploadedImages = [];
-        //     $totalImages = count($images['name']);
-
-        //     for ($i = 0; $i < $totalImages; $i++) {
-        //         $imagesPath = 'uploads/products/' . time() . '-' . basename($images['name'][$i]);
-
-        //         if (move_uploaded_file($images["tmp_name"][$i], PATH_UPLOAD . $imagesPath)) {
-        //             $uploadedImages[] = $imagesPath;
-        //         }
-        //     }
-
-        //     // Lưu danh sách các ảnh đã tải lên vào biến $data
-        //     $data['anh_sp'] = implode(',', $uploadedImages);
-
-        //     // debug($data['anh_sp']);die;
-        // } else {
-        //     $data['anh_sp'] = null;
-        // }
-
-        // debug($_POST);
-        // die;
-
-
-
         updateOneProduct('san_pham', $id, $data);
         // Điều hướng
 

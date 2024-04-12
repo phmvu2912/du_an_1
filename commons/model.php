@@ -575,10 +575,10 @@ if (!function_exists('listCommentById')) {
     {
         try {
             // $sql = "SELECT * FROM $tableName WHERE id_sp = :id_sp";
-            $sql = "SELECT bl.*, nd.ten_nguoi_dung 
-                    FROM $tableName bl
-                    JOIN nguoi_dung nd ON bl.id_nguoi_dung = nd.id_nguoi_dung
-                    WHERE bl.id_sp = :id_sp";
+            $sql = "SELECT bl.*, nd.ten_nguoi_dung, nd.avatar 
+                FROM $tableName bl
+                JOIN nguoi_dung nd ON bl.id_nguoi_dung = nd.id_nguoi_dung
+                WHERE bl.id_sp = :id_sp";
 
             $stmt = $GLOBALS['conn']->prepare($sql);
 

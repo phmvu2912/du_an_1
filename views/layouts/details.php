@@ -66,11 +66,7 @@
                         </div>
 
                         <div class="add">
-                            <button><a href="<?= BASE_URL . '?act=cart-add&id=' . $item['id_sp'] . '&quantity=1' ?>">Thêm vào giỏ</a></button>
-                        </div>
-
-                        <div class="compare">
-                            <button>Mua ngay</button>
+                            <button onclick="addToCart()">Thêm vào giỏ</button>
                         </div>
                     </div>
 
@@ -174,7 +170,7 @@
                             <?php foreach ($feedbacks as $cmt) : ?>
                                 <div class="cmt">
                                     <div class="avt">
-                                        <img src="<?= BASE_URL ?>assets/client/images/icon-personal.svg" width='25px'>
+                                        <img src="<?= $cmt['avatar'] ?>">
                                     </div>
     
                                 <div class="cmt-content">
@@ -185,13 +181,8 @@
                                 <div class="acts">
                                     <div class="like-cmt">
                                         <img src="" alt="">
-                                        <p>Hữu ích</p>
-                                    </div>
-    
-                                    <div class="like-cmt">
-                                        <img src="" alt="">
-                                        <p>Báo cáo</p>
-                                    </div>
+                                        <p><?= $cmt['ngay_binh_luan'] ?></p>
+                                    </div>                    
                                 </div>
                             </div>
                             <?php endforeach ?>
@@ -293,5 +284,20 @@
 
         const down = () => {
             qty.value = parseInt(qty.value) - 1;
+        }
+
+        
+        function addToCart() {
+            let quantity = document.getElementById("qty").value;
+
+            // Kiểm tra nếu quantity là số âm, không thực hiện thêm vào giỏ hàng
+            if (quantity < 0) {
+                alert("Vui lòng nhập số không âm.");
+                return;
+            }
+
+            let itemId = "<?php echo $product['id_sp']; ?>"; // Sử dụng PHP để nhúng giá trị id_sp vào JavaScript
+            let url = "<?php echo BASE_URL . '?act=cart-add&id='; ?>" + itemId + "&quantity=" + quantity;
+            window.location.href = url;
         }
     </script>

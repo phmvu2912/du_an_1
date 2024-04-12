@@ -131,14 +131,8 @@ function createOrder($orderData)
 function orderStatus()
 {
     $id_user = $_SESSION['user']['id_nguoi_dung'];
-    
-
 
     $statusOrder = listStatusOrderByIdUser('don_hang', $id_user);
-    
-    
-
-    
 
     // debug($status);die;
 
@@ -149,6 +143,8 @@ function orderStatus()
 
     require_once PATH_VIEW . 'layouts/master.php';
 }
+
+
 
 function orderCancel($id) {
     cancelOrderById('don_hang', $id);
