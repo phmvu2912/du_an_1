@@ -30,6 +30,8 @@ function orderEdit($id) {
 
     $order = listOrderItemsByIdOrder($id);
 
+    $sttErr = '';
+
     if(!empty($_POST)) {
         $data = [
             'ten_nguoi_nhan' => $_POST['username'],
@@ -39,6 +41,8 @@ function orderEdit($id) {
             'trang_thai_giao_hang' => $_POST['statusDelivery'],
             'trang_thai_thanh_toan' => $_POST['statusPayment'],
         ];
+
+        $statusDelivery = $order['trang_thai_giao_hang'];
 
         // debug($data);die;
         updateOneOrder('don_hang', $id, $data);

@@ -3,7 +3,7 @@
                 <form action="" method="POST" enctype="multipart/form-data">
                     <div class="info-left">
                         <div class="img">
-                            <img src="<?= $user['avatar'] ?>" alt="">
+                            <img src="<?= $user['avatar'] ?>" alt="" width="200px">
                         </div>
 
                         <input type="file" name="avatar" id="">

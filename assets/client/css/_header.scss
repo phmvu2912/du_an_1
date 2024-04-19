@@ -45,5 +45,22 @@
         .icons img {
             width: 22px;
         }
+
+        .search-area {
+            display: flex;
+            flex-direction: row-reverse;
+            
+
+            .search-bar {
+                display: none;
+                // align-items: center;
+                margin-right: 10px;
+
+                input {
+                    padding: 7px;
+                    border-radius: 5px;
+                }
+            }
+        }
     }
 }

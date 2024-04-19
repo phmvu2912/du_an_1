@@ -64,40 +64,46 @@ function orderCheckout()
 
 function orderPurchase()
 {
-    if (isset($_POST['orderAdd'])) {
-        $user_id = $_SESSION['user']['id_nguoi_dung'];
+    //if (isset($_POST['orderAdd'])) {
+    $user_id = $_SESSION['user']['id_nguoi_dung'];
 
-        $cartUser = getCartByUserID($user_id);
+    // $cartUser = getCartByUserID($user_id);
 
-        // debug($cartUser);die;
+    // // debug($cartUser);die;
 
-        $orderData = [
-            'id_nguoi_dung' => $user_id,
-            'ten_nguoi_nhan' => $_POST['username'],
-            'email_nguoi_nhan' => $_POST['email'],
-            'sdt_nguoi_nhan' => $_POST['phone'],
-            'dia_chi_nguoi_nhan' => $_POST['location'],
-            'tong_tien' => $_POST['totalBill'],
-            'trang_thai_giao_hang' => 0,
-            'trang_thai_thanh_toan' => 0,
-        ];
+    // $orderData = [
+    //     'id_nguoi_dung' => $user_id,
+    //     'ten_nguoi_nhan' => $_POST['username'],
+    //     'email_nguoi_nhan' => $_POST['email'],
+    //     'sdt_nguoi_nhan' => $_POST['phone'],
+    //     'dia_chi_nguoi_nhan' => $_POST['location'],
+    //     'tong_tien' => $_POST['totalBill'],
+    //     'trang_thai_giao_hang' => 0,
+    //     'trang_thai_thanh_toan' => 1,
+    // ];
+    $orderData = $_SESSION['bill'];
 
-        if (!empty($cartUser)) {
-            createOrder($orderData);
+    $cartUser = getCartByUserID($user_id);
 
-            remoteAllCartItem($cartUser['id_nguoi_dung']);
+    if (!empty($cartUser)) {
+        createOrder($orderData);
 
-            deleteCart('gio_hang', $cartUser['id_nguoi_dung']);
+        remoteAllCartItem($cartUser['id_nguoi_dung']);
 
-            unset($_SESSION['cart']);
-        }
+        deleteCart('gio_hang', $cartUser['id_nguoi_dung']);
+        unset($_SESSION['bill']);
+        unset($_SESSION['cart']);
     }
+
+    header('Location: ' . BASE_URL . '?act=order_status');
+    // }
 }
 
 
 function createOrder($orderData)
 {
     $order_id = insert_get_last_id('don_hang', $orderData);
+
 
     if ($order_id !== null) {
         $cartItems = $_SESSION['cart'];
@@ -118,14 +124,13 @@ function createOrder($orderData)
             ];
 
             insert('chi_tiet_don_hang', $newOrderItem);
-
         }
 
-        echo "<script>alert('Đặt hàng thành công')</script>";
+        // echo "<script>alert('Đặt hàng thành công')</script>";
     }
 
-    header('Location: ' . BASE_URL . '?act=order_status');
-    exit();
+    // header('Location: ' . BASE_URL . '?act=order_status');
+    // exit();
 }
 
 function orderStatus()
@@ -134,9 +139,11 @@ function orderStatus()
 
     $statusOrder = listStatusOrderByIdUser('don_hang', $id_user);
 
-    // debug($status);die;
+    //debug($_GET);die;
 
-    // debug($statusOrder);die;
+    // if ($_GET['resultCode'] == 0) {
+    //     orderPurchase();
+    // }
 
     $title = 'Tình trạng đơn hàng';
     $view = 'layouts/order_status';
@@ -146,8 +153,23 @@ function orderStatus()
 
 
 
-function orderCancel($id) {
+function orderCancel($id)
+{
     cancelOrderById('don_hang', $id);
+
+    header('Location: ' . BASE_URL . '?act=order_status');
+}
+
+function orderDelete($id)
+{
+    deleteOrderById('don_hang', $id);
+
+    header('Location: ' . BASE_URL . '?act=order_status');
+}
+
+function orderConfirmReceived($id)
+{
+    confirmReceivedOrderById('don_hang', $id);
 
     header('Location: ' . BASE_URL . '?act=order_status');
 }

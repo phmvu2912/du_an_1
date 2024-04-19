@@ -7,7 +7,7 @@
                     <h1>Thông tin đặt hàng</h1>
                 </div>
 
-                <form action="?act=order-purchase" method="POST">
+                <form action="?act=online-payments" method="POST">
                     <div class="bill-body">
                         <div class="content-left">
                             <!-- Tên người nhận hàng -->
@@ -34,7 +34,7 @@
                             <div class="form-group">
                                 <div class="form-control">
                                     <label for="location">Địa chỉ</label>
-                                    <input type="text" id="location"  name="location" >
+                                    <input type="text" id="location"  name="location" required>
                                 </div>
                             </div>
 
@@ -42,7 +42,7 @@
                             <div class="form-group">
                                 <div class="form-control">
                                     <label for="phone">Số điện thoại</label>
-                                    <input type="number" id="phone"  name="phone">
+                                    <input type="number" id="phone"  name="phone" required>
                                 </div>
                             </div>
 
@@ -50,7 +50,7 @@
                             <div class="form-group">
                                 <div class="form-control">
                                     <label for="email">Email</label>
-                                    <input type="email" id="email"  name="email">
+                                    <input type="email" id="email"  name="email" required>
                                 </div>
                             </div> 
 
@@ -111,7 +111,7 @@
                                     </div>
 
                                     <!-- Chọn Voucher -->
-                                    <div class="voucher-item" style="margin-top: 10px">
+                                    <!--<div class="voucher-item" style="margin-top: 10px">
                                         <b>Chọn mã giảm giá</b>
                                         <form action="" method='POST'>
                                             <div class="selectVoucher">
@@ -129,7 +129,7 @@
     
                                             </div>
                                         </form>
-                                    </div>
+                                    </div> -->
 
                                     <div class="content-item" style="margin-top: 10px">
                                         <b style="font-size: 23px">Tổng tiền:</b>
@@ -220,27 +220,22 @@
                                 </div>
 
                                 <hr>
-                                <b>Chọn phương thức thành toán</b>
+                                <!-- <b>Chọn phương thức thành toán</b>
                                 <div class="form-group">
                                     <div class="form-control">
-                                        <input type="radio" name="payments"> Thanh toán online
+                                        <input type="radio" name="payments_momo"> Thanh toán online bằng MoMo
                                     </div>
-                                </div>
+                                </div> -->
 
-                                <div class="form-group">
-                                    <div class="form-control">
-                                        <input type="radio" name="payments"> Thanh toán tiền mặt khi nhận hàng (COD)
-                                    </div>
-                                </div>
 
-                                <p class="privacy">
+                                <p class="privacy" style="margin: 33px 0">
                                     Thông tin cá nhân của bạn sẽ được sử dụng để hỗ trợ trải nghiệm của bạn trên trang web này, 
                                     quản lý quyền truy cập vào tài khoản của bạn và cho các mục đích khác được mô tả trong 
                                     <a href="">chính sách bảo mật</a> của chúng tôi.
                                 </p>
 
                                 <div class="form-btn">
-                                    <button type="submit" name="orderAdd">Đặt hàng</button>
+                                    <button type="submit" name="payUrl">Thanh toán online bằng MOMO</button>
                                 </div>
                             </div>
                         </div>

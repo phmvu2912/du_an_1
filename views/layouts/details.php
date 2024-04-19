@@ -62,7 +62,7 @@
 
                     <div class="actions">
                         <div class="quantity">
-                            <input type="number" id="qty" value="0">                           
+                            <input type="number" id="qty" value="1">                           
                         </div>
 
                         <div class="add">
@@ -156,7 +156,8 @@
                     </div>
 
                     <div class='cmt-heading'>
-                        <p>Bình luận</p>
+                        
+                        <p>Bình luận <span>[ <?= count($feedbacks) ?> ]</span></p>
                     </div>
                 <?php } else { ?>
                     <p style="text-align: center; font-size: 18px; margin: 0 0 20px 0">Đăng nhập để viết bình luận! <a style="text-decoration: underline" href="?act=login">Đăng nhập ngay</a></p>
@@ -181,7 +182,7 @@
                                 <div class="acts">
                                     <div class="like-cmt">
                                         <img src="" alt="">
-                                        <p><?= $cmt['ngay_binh_luan'] ?></p>
+                                        <p><?= date('d-m-Y', strtotime($cmt['ngay_binh_luan'])) ?></p>
                                     </div>                    
                                 </div>
                             </div>

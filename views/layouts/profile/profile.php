@@ -24,16 +24,19 @@
         <main>
             <!-- Banner -->
             <section class="personal">
-                <div class="personal-background">
+                <div class="personal-background">  
                     <div class="container">
                         <div class="personal-info">
-                            <img src="https://picsum.photos/200" alt="">
+                            <div class="avt">
+                                <img src="<?= $profile['avatar'] ?>" alt="">
+                            </div>
     
                             <div class="">
                                 <div class="name">
-                                    <b><?= $fullname == null ? 'Thông tin đang trống' : $fullname ?></b>
+                                    <b>Xin chào, <?= $fullname == null ? 'Thông tin đang trống' : $fullname ?></b>
                                     <br>
                                     <p><b>Tên đăng nhập: </b><?= $username == null ? 'Thông tin đang trống' : $username ?></p>
+                                    <a href="?act=profile-edit&id=<?= $id_user ?>">Chỉnh sửa</a> | <a href="?act=logout" onclick="return confirm('Bạn có muốn đăng xuất tài khoản này?')">Đăng xuất</a>
                                 </div>
                             </div>
                         </div>
@@ -68,21 +71,22 @@
                     </div>
                     <div class="orders-items">   
                         <div class="o-item">
-                            <i class="fa-solid fa-wallet"></i>
-                            <a href="">Chờ xác nhận</a>
+                            <i class="fa-solid fa-boxes-stacked"></i>
+                            <a href="?act=order_uncomfirm&id=<?= $id_user ?>">Chờ xác nhận</a>
                         </div>
                         <div class="o-item">
-                            <i class="fa-solid fa-box"></i>
-                            <a href="">Chờ lấy hàng</a>
+                            <i class="fa-solid fa-check-double"></i>
+                            <a href="?act=order_comfirmed&id=<?= $id_user ?>">Đã xác nhận</a>
                         </div>
                         <div class="o-item">
                             <i class="fa-solid fa-truck"></i>
-                            <a href="">Đang vận chuyển</a>
+                            <a href="?act=order_shipping&id=<?= $id_user ?>">Đang vận chuyển</a>
                         </div>
                         <div class="o-item">
-                            <i class="fa-solid fa-comment"></i>
-                            <a href="">Đã bình luận</a>
+                            <i class="fa-solid fa-box"></i>
+                            <a href="?act=order_delivered&id=<?= $id_user ?>">Đã nhận hàng</a>
                         </div>
+                        
                     </div>
                 </section>
     

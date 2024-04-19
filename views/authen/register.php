@@ -50,10 +50,12 @@
                     <form action="" method="POST" >
                         <?php if( $status == false ) : ?>
                             <div class="alert alert-danger">
-                                <?= $err ?>
+                                <?= $popup ?>
                             </div>
                         <?php endif ?>
-                            
+                        <?php 
+                            echo $success ? '<div class="alert alert-success">' . $popup . '</div>' : '';     
+                        ?>  
                                 
 
                         <div class="divider d-flex align-items-center my-4">

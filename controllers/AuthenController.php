@@ -42,31 +42,33 @@ function authenLogout()
 
 function authenRegister()
 {
-    $err = '';
+    $popup = '';
     $status = true;
-    
-    
+    $success = false;
+
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $email = $_POST['email'];
         $pass = $_POST['password'];
 
-        if(empty($email) && empty($pass)) {
+        if (empty($email) && empty($pass)) {
             $status = false;
-            $err = 'Không được bỏ trống!';
+            $popup = 'Không được bỏ trống!';
         } elseif (strlen($pass) < 3) {
             $status = false;
-            $err = 'Mật khẩu ít nhất chứa 5 ký tự!';
+            $popup = 'Mật khẩu ít nhất chứa 5 ký tự!';
         } else {
             $data = [
                 'email' => $email,
                 'mat_khau' => $pass
             ];
-    
+
             insert('nguoi_dung', $data);
+            $success = true;
+            $popup = 'Đăng ký thành công!';
         }
     } else {
-        
+
     }
 
 

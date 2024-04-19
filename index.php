@@ -43,7 +43,10 @@ match ($act) {
 
     'shop' => shopList(),
     // 'about' => aboutShow(),
-    // 'news' => newsList(),
+
+    // Tin tức
+    'news' => newsList(),
+    'news-details' => newsDetail($_GET['id']),
 
     // Chi tiết sản phẩm
     'details' => detailsShow($_GET['id']),
@@ -61,11 +64,24 @@ match ($act) {
     'order-purchase' => orderPurchase(),
     'order_status' => orderStatus(),
     'order_cancel' => orderCancel($_GET['id']),
-    'select-voucher' => selectVoucher(),
+    'order_delete' => orderDelete($_GET['id']),
+    'order_confirm_received' => orderConfirmReceived($_GET['id']),
 
+
+    
+    
+    'select-voucher' => selectVoucher(),
+    'online-payments' => onlinePayments(),
+    'thanks' => thanksPage(),
+    
     // Trang cá nhân
     'profile' => profilePage(),
     'profile-edit' => profileEdit($_GET['id']),
+    
+    'order_uncomfirm' => orderUncomfirm($_GET['id']),
+    'order_shipping' => orderShipping($_GET['id']),
+    'order_delivered' => orderDelivered($_GET['id']),
+    'order_comfirmed' => orderComfirmed($_GET['id']),
     
 };
 

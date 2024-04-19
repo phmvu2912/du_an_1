@@ -259,6 +259,12 @@ section {
 
     &-col img {
         width: 100%;
+        transition: 0.5s ease-in-out;
+    }
+
+    &-col img:hover {
+        transform: scale(1.1);
+        border: 1px dashed #97b052;
     }
 }
 
@@ -296,6 +302,7 @@ section {
             .post-title {
                 font-size: 20px;
                 font-weight: 700;
+                margin-bottom: 20px;
             }
 
             .post-desc {

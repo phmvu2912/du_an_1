@@ -97,15 +97,18 @@
 
             <!-- Trạng thái giao hàng -->
             <div class="col-6">
-                <label for="inputState" class="form-label font-weight-bold">Trạng thái giao hàng</label>
-                <select id="inputState" class="form-control text-center" name="statusDelivery">
-                    <option value="0" <?= $order['trang_thai_giao_hang'] == 0 ? 'selected' : '' ?> >Chưa xác nhận</option>       
-                    <option value="1" <?= $order['trang_thai_giao_hang'] == 1 ? 'selected' : '' ?>>Đã xác nhận</option>
-                    <option value="2" <?= $order['trang_thai_giao_hang'] == 2 ? 'selected' : '' ?>>Đang vận chuyển</option>       
-                    <option value="3" <?= $order['trang_thai_giao_hang'] == 3 ? 'selected' : '' ?>>Đã nhận</option>
-                    <option value="-1" <?= $order['trang_thai_giao_hang'] == -1 ? 'selected' : '' ?>>Đã hủy</option>    
-                </select>
-            </div>
+    <label for="inputState" class="form-label font-weight-bold">Trạng thái giao hàng</label>
+    <select id="inputState" class="form-control text-center" name="statusDelivery">
+        <option value="0" <?= $order['trang_thai_giao_hang'] == 0 ? 'selected' : '' ?> >Chưa xác nhận</option>       
+        <option value="1" <?= $order['trang_thai_giao_hang'] == 1 ? 'selected' : '' ?>>Đã xác nhận</option>
+        <option value="2" <?= $order['trang_thai_giao_hang'] == 2 ? 'selected' : '' ?>>Đang vận chuyển</option>       
+        <option value="3" <?= $order['trang_thai_giao_hang'] == 3 ? 'selected' : '' ?>>Đã nhận</option>
+        <option value="-1" <?= $order['trang_thai_giao_hang'] == -1 ? 'selected' : '' ?>>Đã hủy</option>    
+    </select>
+    <p id="error-message" style="color: red; display: none;">Không thể chọn lại trạng thái trước đó.</p>
+</div>
+
+
 
             <!-- Trạng thái thanh toán -->
             <div class="col-6">
@@ -124,3 +127,27 @@
         </form>
     </div>
 </div>
+
+<script>
+    var previousValue = parseInt(document.getElementById('inputState').value);
+
+    document.getElementById('inputState').addEventListener('change', function() {
+        var selectedValue = parseInt(this.value);
+        var options = document.querySelectorAll('#inputState option');
+
+        if (selectedValue >= previousValue) {
+            for (var i = 0; i < options.length; i++) {
+                if (parseInt(options[i].value) < selectedValue) {
+                    options[i].disabled = true;
+                } else {
+                    options[i].disabled = false;
+                }
+            }
+            previousValue = selectedValue;
+            document.getElementById('error-message').style.display = 'none'; // Ẩn thông báo lỗi nếu có
+        } else {
+            this.value = previousValue;
+            document.getElementById('error-message').style.display = 'block'; // Hiển thị thông báo lỗi
+        }
+    });
+</script>

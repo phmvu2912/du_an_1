@@ -91,15 +91,17 @@
                                     </div>
 
                                     <div class="post-details">
-                                        <p class="post-title"><?= $p['tieu_de'] ?></p>
-                                        <p class="post-desc">
-                                            <?php 
-                                                $previewBlog = substr($p['noi_dung'], 0, 205);
-                                            ?>
-                                            <?= $previewBlog . '...' ?>
-                                        </p>
+                                        <div class="post-info">
+                                            <p class="post-title"><?= $p['tieu_de'] ?></p>
+                                            <p class="post-desc">
+                                                <?php 
+                                                    $previewBlog = substr($p['noi_dung'], 0, 205);
+                                                ?>
+                                                <?= $previewBlog . '...' ?>
+                                            </p>
+                                        </div>
                                         <div class="post-link">
-                                            <a href="">Xem chi tiết</a>
+                                            <a href="?act=news-details&id=<?= $p['id_bai_viet'] ?>">Xem chi tiết</a>
                                             <img src="<?= BASE_URL . 'assets/client/images/icon-next.svg'?>" width="20px">
                                         </div>
                                     </div>

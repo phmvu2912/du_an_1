@@ -37,6 +37,18 @@
 .header-right .icons img {
   width: 22px;
 }
+.header-right .search-area {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.header-right .search-area .search-bar {
+  display: none;
+  margin-right: 10px;
+}
+.header-right .search-area .search-bar input {
+  padding: 7px;
+  border-radius: 5px;
+}
 
 .footer {
   display: flex;
@@ -691,43 +703,46 @@ hr {
   justify-content: space-between;
   align-items: center;
 }
-.tools-items .tools-left {
+.tools-items .tools-group .tools-left {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.tools-items .tools-left .filter {
+.tools-items .tools-group .tools-left input {
+  width: 250px;
+  padding: 7px;
+  border: 5px;
+}
+.tools-items .tools-group .tools-left button {
+  padding: 7px 10px;
+  border: none;
+  cursor: pointer;
+  background-color: #B88E2F;
+  font-weight: 500;
+}
+.tools-items .tools-group .tools-left .search {
   display: flex;
   align-items: center;
   font-weight: 500;
   gap: 10px;
   margin-right: 15px;
 }
-.tools-items .tools-left .list_display {
+.tools-items .tools-group .tools-left .list_display {
   align-self: center;
 }
-.tools-items .tools .spacing {
+.tools-items .tools-group .spacing {
   border: 1px solid black;
   height: 25px;
   margin: 0 20px 0 20px;
 }
-.tools-items .tools-right span {
+.tools-items .tools-group .tools-right span {
   font-weight: 500;
 }
-.tools-items .tools form {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.tools-items .tools form input {
-  max-width: 50px;
-  padding: 7px 0;
-  text-align: center;
-}
-.tools-items .tools form p {
+.tools-items .tools p {
   font-weight: 500;
+  margin-right: 10px;
 }
-.tools-items .tools form .select {
+.tools-items .tools .select {
   padding: 7px 25px;
   text-align: center;
 }
@@ -770,10 +785,15 @@ hr {
   flex-direction: column;
 }
 .info-edit form .info-left .img {
-  border: 1px solid #9b6f07;
-  min-width: 200px;
-  min-height: 200px;
+  max-width: 200px;
+  max-height: 200px;
   margin-bottom: 10px;
+}
+.info-edit form .info-left .img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .info-edit form .info-right {
   flex: 2;
@@ -996,6 +1016,11 @@ section {
 }
 .shop-col img {
   width: 100%;
+  transition: 0.5s ease-in-out;
+}
+.shop-col img:hover {
+  transform: scale(1.1);
+  border: 1px dashed #97b052;
 }
 
 .blog_content-body {
@@ -1030,6 +1055,7 @@ section {
 .post-item .post-details .post-title {
   font-size: 20px;
   font-weight: 700;
+  margin-bottom: 20px;
 }
 .post-item .post-details .post-desc {
   text-align: justify;
